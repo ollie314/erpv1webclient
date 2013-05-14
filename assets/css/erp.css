@@ -1,0 +1,96 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+/*hml, body {
+    background-color: #180153;
+    color: #FFFFFF !important;
+}*/
+
+.metro .login .tile.wide.app {
+    cursor: default;
+    padding: 80px 52px 115px;
+    width: 500px;
+}
+header.form {
+    padding: 10px 0;
+    position: relative;
+    top: -40px;
+}
+header.form h2 {
+    color: #ffffff;
+}
+header.form .icon-user {
+    font-size: 46px;
+    line-height: 46px;
+    position: relative;
+    top: -44px;
+}
+.icon-fire:before {
+    position: absolute;
+    top: 17px;
+    left: 22px;
+    font-family: 'IcoMoon';
+    font-size: 36px;
+}
+.metro .tile:hover {
+    outline: none;
+}
+.logo {
+    background-image: url('/assets/img/credit_card_clock.png');
+}
+
+.checkbox.padding-bottom {
+    padding-bottom: 10px;
+}
+
+button[type='submit'].padding-bottom {
+    padding: 5px 0 25px;
+}
+
+.win-white-content {
+    font-weight: bold;
+    color : white;
+}
+
+#section1 > h2,
+#section2 > h2 {
+    text-transform: uppercase;
+}
+
+.list-search-widget .search-input {
+    height: 28px;
+    max-height: 28px;
+    min-height: 28px;
+    width: 255px;
+}
+
+.search-range-inline {
+    float: left;
+    padding-right: 20px;
+}
+
+.search-range-inline label {
+    display: none;
+    /*float: left;
+    padding-right: 20px;*/
+}
+
+.top-padding-tiles {
+    padding: 18px 0 !important;
+}
+
+.datepicker{
+    z-index:1151;
+}
+
+.spinner-elt {
+    display:none;
+    /*background-color: #0044cc;*/
+    opacity: .6;
+    position: relative;
+    left: 0;
+    top: 0;
+}
+
+.spinner {
+    top : 87px !important;
+    margin: 0 auto;
+}

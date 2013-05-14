@@ -1,0 +1,54 @@
+<div class="row-fluid">
+    <div class="metro span12">
+        <form class="inline">
+            <div class="control-group span2">
+                <div class="controls span2">
+                    <input type="text" id="inputDate" name="date"
+                           placeholder="Date" readonly="readonly" class="datepicker">
+                </div>
+            </div>
+            <div class="control-group span2">
+                <div class="controls span2">
+                    <input type="text" id="inputSite" name="site"
+                           placeholder="Site" readonly="readonly">
+                </div>
+            </div>
+            <div class="control-group span2">
+                <div class="controls span2">
+                    <input type="text" id="inputClient" name="client"
+                           placeholder="client" readonly="readonly">
+                </div>
+            </div>
+            <div class="control-group span1">
+                <select class="span12" name="worktype" id="worktypeInput">
+                    <option value="1">Workshop</option>
+                    <option value="2">On site</option>
+                </select>
+            </div>
+            <div class="control-group span2">
+                <div class="controls span2">
+                    <input type="text" id="inputDuration" name="duration"
+                           placeholder="Duration" class="timepicker">
+                </div>
+            </div>
+            <div class="input-prepend">
+                <div class="btn-group">
+                    <button class="btn dropdown-toggle" data-toggle="dropdown">
+                        Code
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li value="1">Mesure</li>
+                        <li value="2">Decoupage</li>
+                        <li value="3">Montage</li>
+                        <li value="4">Empaquetage</li>
+                    </ul>
+                </div>
+                <input class="span2" id="prependedDropdownButton" type="text" placeholder="Description">
+                <a href="#" class="btn btn-small btn-primary">
+                    <i class="icon-plus"></i>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

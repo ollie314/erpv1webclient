@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<manifest>
+    <author>mlefebvre</author>
+    <company><![CDATA[Simnet S.A.]]></company>
+    <version>0.0.1</version>
+    <descriptor>descriptor.xml</descriptor>
+    <logdir><![CDATA[.]]></logdir>
+    <installdir><![CDATA[./install]]></installdir>
+    <tempdir><![CDATA[./tmp]]></tempdir>
+</manifest>

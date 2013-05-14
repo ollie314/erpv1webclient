@@ -1,0 +1,31 @@
+<div id="siteAddProviderForm" class="modal message hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h3>Add new provider</h3>
+    </div>
+    <div class="modal-body">
+        <form class="form" action="#" method="post" id="addSiteForm">
+            <div class="controls">
+                <input class="span6 erp-input" type="text" id="inputProviderName" placeholder="Name of the provider">
+            </div>
+            <div class="controls">
+                <input class="span6 erp-input"  type="text" id="inputProviderPhone" placeholder="Phone of the provider">
+            </div>
+
+            <div class="controls">
+                <input class="span6 erp-input" type="text" id="inputProviderMail" placeholder="Mail of the provider">
+            </div>
+
+            <div class="controls">
+                <textarea class="span3 erp-input" id="inputProviderAddress" placeholder="Address"></textarea>
+                <textarea class="span3 erp-input" id="inputProviderDescription" placeholder="More information"></textarea>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-large btn dismiss" id="providerCloseBtn" data-dismiss="modal">Close</button>
+        <button class="btn btn-large btn-info btn save" id="providerSaveAndHideBtn" data-complete-text="Saved !" data-toggle="button" data-loading-text="Processing ...">Save</button>
+        <button class="btn btn-large btn-primary btn save" id="providerSaveBtn" data-complete-text="Saved !" data-toggle="button" data-loading-text="Processing ...">Save and add</button>
+    </div>
+</div>
