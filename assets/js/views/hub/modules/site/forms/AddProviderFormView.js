@@ -154,7 +154,7 @@ define([
                             $(element).val('');
                         });
                     },
-                    doHideDialog: function() {
+                    doHideDialog: function () {
                         $(view.dlgSel).modal('hide');
                     }
                 });
@@ -177,12 +177,12 @@ define([
                 initialize: function () {
                     initStateMachine(this);
                     initEvents(this);
-                    this.$el.append(viewTemplate);
                 },
                 render: function () {
                     var self = this,
                         dlg = self.dlgSel;
                     if (!self.mInitialized) {
+                        this.$el.append(viewTemplate);
                         $(dlg).modal({
                             show: false
                         }).on('hide',function () {

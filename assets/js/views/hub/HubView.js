@@ -64,7 +64,6 @@ define([
             });
             erp.mediator.subscribe('hub:rendering:complete', function () {
                 erp.mediator.publish("hub:ready", {target: elt, template: hubTemplate});
-                window.log.debug(hubTemplate);
                 elt.trigger('show');
                 initNavbars();
             });

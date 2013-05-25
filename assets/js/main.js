@@ -83,7 +83,7 @@ require.config({
             exports : 'jQueryTouchewipe'
         },
         bootstrapDatepicker : {
-            deps : ['jquery', 'bootstrap'],
+            deps : ['jquery', 'bootstrap', 'date'],
             exports: 'BootstrapDatePicker'
         },
         date : {

@@ -68,7 +68,7 @@ define([
                         mediator.publish('spin:hide');
                     }
                 });
-                elt.startStateMachine({debug : true});
+                elt.startStateMachine({debugStateMachine : false});
                 elt.trigger('initialized');
                 erp.viewManager.push(Erp.ViewNames.HUB_BOTTOM_BAR, view);
                 erp.mediator.on("hub:rendering:complete", function(date) {
