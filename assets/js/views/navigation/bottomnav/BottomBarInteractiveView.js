@@ -17,6 +17,7 @@ define([
      });
      return BottomBarHubView;*/
     var erp = window.Erp,
+        mediator = erp.mediator,
         viewManager,
         createStateMachine = function(view) {
             var elt = view.$el;
@@ -28,7 +29,10 @@ define([
 
                 transitions: {
                     'init': {
-                        'initialized': {enterState: 'visible'}
+                        'initialized': {
+                            enterState: 'visible',
+                            callbacks: ['barInitialized']
+                        }
                     },
                     'visible': {
                         'hide': {enterState: 'hidden'}
@@ -39,20 +43,25 @@ define([
                 },
                 doShow: function () {
                     elt.fadeIn(fxDuration, function () {
-                        $(view.el).off('click').on('click', function () {
+                        /*$(view.el).off('click').on('click', function () {
                             elt.trigger('hide');
                             setTimeout(function () {
                                 elt.trigger('show');
                             }, 3000);
-                        });
+                        });*/
                     });
 
                 },
                 doHide: function () {
                     elt.fadeOut(fxDuration, function () {
-                        $(view.el).off('click').on('click', function () {
+                        /*$(view.el).off('click').on('click', function () {
                             elt.trigger('show');
-                        });
+                        });*/
+                    });
+                },
+                barInitialized: function() {
+                    $("#addDialNavBarBtn").off('click').on('click', function() {
+                        mediator.publish("nav:bottom:add:click");
                     });
                 }
             });
@@ -67,7 +76,7 @@ define([
             render: function () {
                 this.$el.html(bottombarTemplate);
                 this.$el.fadeIn(fxDuration);
-                this.$el.trigger('hub:bottombar:showing');
+                mediator.publish('hub:bottombar:showing');
             },
             initialize: function () {
                 createStateMachine(this);

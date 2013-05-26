@@ -14,14 +14,19 @@ define([
     'views/connection/SigninView',
     'views/manager/UsersAndGroupsView',
     'views/hub/HubView'
-], function ($, _, Backbone, ViewManager, StateMachine, Mediator, MetroUi, BrowserDetect, Erp, SpinView, AddProviderFormView, ListView, SigninView, UsersAndGroupsView, HubView /*, FooterView*/) {
+], function ($, _, Backbone, ViewManager,
+             StateMachine, Mediator, MetroUi,
+             BrowserDetect, Erp, SpinView,
+             AddProviderFormView, ListView,
+             SigninView, UsersAndGroupsView, HubView /*, FooterView*/) {
 
-    String.isNullOrEmpty = function(str) {
+    String.isNullOrEmpty = function (str) {
         return (null == str || str == "");
     };
-    var initLoading = function() {
+
+    var initLoading = function () {
             var spinView = new SpinView();
-            window.Erp.mediator.subscribe('hub:ready', function(data) {
+            window.Erp.mediator.subscribe('hub:ready', function (data) {
                 spinView.stop();
                 data.target.html(data.template);
                 data.target.fadeIn(1000);
@@ -29,39 +34,39 @@ define([
             spinView.render();
         },
         AppRouter = Backbone.Router.extend({
-        initialize: function () {
-        },
-        routes: {
-            'manageUsers': 'manageUsers',
+            initialize: function () {
+            },
+            routes: {
+                'manageUsers': 'manageUsers',
                 'hub': 'hub',
                 'hub/site-manager': 'siteManager',
                 'hub/timesheets': 'timesheets',
                 'hub/addressbook': 'addressbook',
                 '*actions': 'defaultAction'
             },
-        hub: function () {
-            var hubView = new HubView();
-            hubView.render();
-        },
-        manageUsers: function () {
-            var usersAndGroupsView = new UsersAndGroupsView();
-            usersAndGroupsView.render();
-        },
-        siteManager: function () {
-            var listView = new ListView(),
-                forms = {
-                    addProvider : new AddProviderFormView()
-                };
-            listView.forms = forms;
-            listView.render();
-        },
-        timesheets: function () {
+            hub: function () {
+                var hubView = new HubView();
+                hubView.render();
+            },
+            manageUsers: function () {
+                var usersAndGroupsView = new UsersAndGroupsView();
+                usersAndGroupsView.render();
+            },
+            siteManager: function () {
+                var listView = new ListView(),
+                    forms = {
+                        addProvider: new AddProviderFormView()
+                    };
+                listView.forms = forms;
+                listView.render();
+            },
+            timesheets: function () {
 
-        },
-        addressbook: function () {
+            },
+            addressbook: function () {
 
-        }
-    });
+            }
+        });
 
     var initialize = function () {
         Erp.initialize();
@@ -83,4 +88,5 @@ define([
     return {
         initialize: initialize
     };
-});
+})
+;

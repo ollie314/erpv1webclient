@@ -1,0 +1,54 @@
+<tr>
+    <td class="align-center">
+        <label class="checkbox">
+            <input type="checkbox"><span class="metro-checkbox"></span>
+        </label>
+    </td>
+    <td>
+        <div id="materialSelectDateWidget_<%= id %>" data-date-format="dd-mm-yyyy" class="input-append date">
+            <input type="text" data-date="" name="material_date[]" id="materialDateImput_<%= id %>"/>
+                        <span class="add-on">
+                            <i class="icon-calendar" data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                        </span>
+        </div>
+    </td>
+    <td>
+        <input type="text" name="materialCode[]" id="materialCodeInput_<%= id %>"
+               placeholder="<%= code_label_placeholder %>" value="<%= code %>"/>
+    </td>
+    <td>
+        <textarea class="span12" name="materialLabel[]" id="materialLabelInput_<%= id %>"
+                  placeholder="<%= label_label_placeholder %>"><%= label %></textarea>
+    </td>
+    <td>
+        <input type="text" class="" name="materialQuantity[]" id="materialQunantityInput_<%= id %>"
+               placeholder="<%= quantity_label_placeholder %>" value="<%= quantity %>"/>
+    </td>
+    <td>
+        <input type="text" class="span3" name="materialUnit[]" id="materialUnitInput_<%= id %>"
+               placeholder="<%= unit_label_placeholder %>" value="<%= unit %>"/>
+    </td>
+    <td>
+        <input type="text" class="span3" name="materialUnitPrice" id="materialUnitPriceInput_<%= id %>"
+               placeholder="<%= price_label_placeholder %>" value="<%= price %>"/>
+    </td>
+    <td>
+        <input type="text" class="span3 uneditable-input" name="materialSubtotal" id="materialSubtotalInput_<%= id %>"
+               placeholder="<%= subtotal_label_placeholder %>" value="<%= subtotal %>" readonly/>
+    </td>
+    <td>
+        <!--<a class="btn btn-small" href="#showMaterialItemDialog">
+            <i class="icon-search"></i>
+        </a>
+        <a class="btn btn-small" href="#reportMaterialItemDialog" data-item-id="<%= id %>">
+            <i class="icon-report">&#x0038;</i>
+        </a>-->
+        <a class="btn btn-small" href="#editMaterialItemDialog" data-item-id="<%= id %>">
+            <i class="icon-edit">&#xe164;</i>
+        </a>
+        <a class="action delete btn btn-small" data-toggle="modal" href="#deleteConfirm"
+           data-target="#deleteConfirm" data-item-id="<%= id %>">
+            <i class="icon-remove"></i>
+        </a>
+    </td>
+</tr>

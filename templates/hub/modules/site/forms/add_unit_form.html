@@ -1,0 +1,22 @@
+<div id="siteAddUnitForm" class="modal message hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h3><%= unit_form_title %></h3>
+    </div>
+    <div class="modal-body">
+        <form class="form" action="#" method="post" id="addUnitForm">
+            <div class="controls">
+                <input class="span6 erp-input" type="text" id="inputUnitName" placeholder="<%= inputunitnane_placeholeder %>" />
+            </div>
+            <div class="controls">
+                <textarea class="span6 erp-input" id="inputUnitDescription" placeholder="More information"></textarea>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-large btn dismiss" id="siteUnitCloseBtn" data-dismiss="modal"><%= close %></button>
+        <button class="btn btn-large btn-info btn save" id="siteUnitSaveAndHideBtn" data-complete-text="Saved !" data-toggle="button" data-loading-text="Processing ..."><%= save %></button>
+        <button class="btn btn-large btn-primary btn save" id="siteUnitSaveBtn" data-complete-text="Saved !" data-toggle="button" data-loading-text="Processing ..."><%= save_and_add %></button>
+    </div>
+</div>

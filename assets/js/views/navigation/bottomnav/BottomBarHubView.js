@@ -4,10 +4,9 @@ define([
     'backbone',
     'stateMachine',
     'erp',
-    'viewManager',
     'bootMetro',
     'text!/templates/navigation/bottomnav/hub.html'
-], function ($, _, Backbone, StateMachine, Erp, ViewManager, MetroUi, bottombarTemplate) {
+], function ($, _, Backbone, StateMachine, Erp, MetroUi, bottombarTemplate) {
     /*var BottomBarHubView = Backbone.View.extend({
      el: $("#pageFooter"),
      render: function () {
@@ -17,6 +16,7 @@ define([
      });
      return BottomBarHubView;*/
     var erp = window.Erp,
+        mediator = erp.mediator,
         viewManager,
         createStateMachine = function(view) {
             var elt = view.$el;
@@ -39,20 +39,20 @@ define([
                 },
                 doShow: function () {
                     elt.fadeIn(fxDuration, function () {
-                        $(view.el).off('click').on('click', function () {
+                        /*$(view.el).off('click').on('click', function () {
                             elt.trigger('hide');
                             setTimeout(function () {
                                 elt.trigger('show');
                             }, 3000);
-                        });
+                        });*/
                     });
 
                 },
                 doHide: function () {
                     elt.fadeOut(fxDuration, function () {
-                        $(view.el).off('click').on('click', function () {
+                        /*$(view.el).off('click').on('click', function () {
                             elt.trigger('show');
-                        });
+                        });*/
                     });
                 }
             });
@@ -67,7 +67,7 @@ define([
             render: function () {
                 this.$el.html(bottombarTemplate);
                 this.$el.fadeIn(fxDuration);
-                this.$el.trigger('hub:bottombar:showing');
+                mediator.publish('hub:bottombar:showing');
             },
             initialize: function () {
                 createStateMachine(this);

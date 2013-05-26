@@ -7,7 +7,7 @@
 // ============================================== \\
 
 define([
-    'Erp'
+    'erp'
 ], function (Erp) {
     function ViewManager(erp) {
         if(this.erp == undefined) {

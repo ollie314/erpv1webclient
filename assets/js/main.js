@@ -7,7 +7,7 @@
 // ===================================================== \\
 require.config({
     baseUrl : '/assets/js',
-    urlArgs: "bust=" + (new Date()).getTime(),
+    urlArgs: "refresh=" + (new Date()).getTime(),
     paths: {
         jquery: './libs/jquery/jquery-min',
         bootstrap: "./libs/bootstrap/bootstrap",
@@ -15,6 +15,7 @@ require.config({
         backbone: './libs/backbone/backbone-min',
         text: './libs/require/text',
         domReady : './libs/require/domReady',
+        i18n : './libs/require/i18n',
         stateMachine: './libs/backbone/backbone.statemachine',
         mediator : './libs/mediatorjs/mediator',
         mousewheel : './libs/jquery/jquery.mousewheel',
@@ -38,6 +39,7 @@ require.config({
         browserDetect : './browser-detect',
         templates: '/templates'
     },
+    locale: "fr-fr",
     shim: {
         'backbone': {
             deps: ['underscore', 'jquery'],

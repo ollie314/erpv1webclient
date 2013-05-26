@@ -10,14 +10,16 @@ define([
     'backbone',
     'erp',
     'bootMetro',
-    'models/provider/ProviderModel',
-    'text!/templates/hub/modules/site/forms/add_provider_form.html'
-], function ($, _, Backbone, Erp, MetroUi, Provider, viewTemplate) {
+    'models/unit/UnitModel',
+    'text!/templates/hub/modules/site/forms/add_unit_form.html',
+    'i18n!views/hub/modules/site/nls/dialog'
+], function ($, _, Backbone, Erp, MetroUi, Unit, viewTemplate, I18nObject) {
         var erp = window.Erp,
             mediator = erp.mediator,
             btns = {
-                close: "#providerCloseBtn",
-                save: "#providerSaveBtn"
+                close: "#siteUnitCloseBtn",
+                save: "#siteUnitSaveBtn",
+                saveAndHide: "#siteUnitSaveAndHideBtn"
             },
             initStateMachine = function (view) {
                 _.extend(view, Backbone.StateMachine, Backbone.Events, {
@@ -31,71 +33,71 @@ define([
                         'init': {
                             'initialized': {
                                 enterState: 'ready',
-                                triggers: 'site:provider:form:ready',
+                                triggers: 'site:unit:form:ready',
                                 callbacks: []
                             }
                         },
                         'ready': {
                             'show': {
                                 enterState: 'visible',
-                                triggers: 'site:provider:form:showing:start'
+                                triggers: 'site:unit:form:showing:start'
                             }
                         },
                         'busy': {
                             'released': {
                                 enterState: 'visible',
-                                triggers: 'site:provider:form:released',
+                                triggers: 'site:unit:form:released',
                                 callbacks: ['freeGui']
                             },
                             'hide': {
                                 enterState: 'hidden',
-                                triggers: 'site:provider:form:released',
+                                triggers: 'site:unit:form:released',
                                 callbacks: []
                             }
                         },
                         'visible': {
                             'hide': {
                                 enterState: 'hidden',
-                                triggers: 'site:provider:form:hidding:start'
+                                triggers: 'site:unit:form:hidding:start'
                             },
                             'busy': {
                                 enterState: 'busy',
-                                triggers: 'site:provider:form:busy',
+                                triggers: 'site:unit:form:busy',
                                 callbacks: []
                             }
                         },
                         'hidden': {
                             'show': {
                                 enterState: 'visible',
-                                triggers: 'site:provider:form:showing:start'
+                                triggers: 'site:unit:form:showing:start'
                             }
                         }
                     },
                     prepare: function () {
-                        mediator.subscribe("site:provider:form:saving:failure", function () {
+                        mediator.subscribe("site:unit:form:saving:failure", function () {
                             alert("An error occurred during saving process");
                         });
-                        mediator.subscribe("site:provider:form:saving:success", function () {
+                        mediator.subscribe("site:unit:form:saving:success", function () {
                             alert("New provider successfully saved");
                         });
                         mediator.subscribe('site:provider:form:saving:start', function (data) {
+
+                            // set the view in busy state
                             view.trigger('busy');
+
+                            // result handle the result of the saving process
                             var result,
-                                name = $("#inputProviderName").val(),
-                                phone = $("#inputProviderPhone").val(),
-                                mail = $("#inputProviderMail").val(),
-                                address = $("#inputProviderAddress").val(),
-                                info = $("#inputProviderDescription").val(),
-                                provider = new Provider({
+                                name = $("#inputUnitName").val(),
+                                info = $("#inputUnitDescription").val(),
+                                unit = new Unit({
                                     name: name,
-                                    phone: phone,
-                                    mail: mail,
-                                    address: address,
                                     description: info
                                 });
-                            view.model = provider;
-                            result = provider.save({
-                                // FIXME : due to a Backbone strange behavoir, handlers are not called. For now, we check the result of the process instead.
+                            view.model = unit;
+
+                            result = unit.save({
+                                /*
+                                FIXME : due to a Backbone strange behavoir, handlers are not called. For now, we check the result of the process instead.
                                 success: function (model, response, options) {
                                     $(btns.save).button('complete');
                                     view.trigger('released');
@@ -104,16 +106,28 @@ define([
                                 error: function (model, xhr, options) {
                                     view.trigger('released');
                                     mediator.publish("site:provider:form:saving:failure", {data: arguments});
-                                }
+                                }*/
                             });
                             if (result === false) {
+                                /*
+                                 * Unable to save the module. So release the ui and fire an event to inform
+                                 * about the situation.
+                                 * On of those handlers should display a notification.
+                                 */
                                 view.trigger('released');
-                                mediator.publish("site:provider:form:saving:failure", {data: arguments});
+                                mediator.publish("site:unit:form:saving:failure", {data: arguments});
                             } else {
-                                // result is a jqXHR.
+                                // result is a jqXHR. So relase each buttons and the the ui.
                                 $(btns.save).button('complete');
                                 view.trigger('released');
-                                mediator.publish("site:provider:form:saving:success", {data: arguments});
+
+                                // firing events
+                                mediator.publish("site:unit:form:saving:success", {data: arguments});
+
+                                /*
+                                 * Determine wich action should be executed now. Clear and still the dialog displayed
+                                 * in case of "click and add" situation or clear and hide it in case of "click and close"
+                                 */
                                 if (data.hasOwnProperty('resultAction')) {
                                     switch (data.resultAction) {
                                         case 'clear' :
@@ -129,6 +143,11 @@ define([
                             }
                         });
                     },
+                    /**
+                     * Release all GUI elements (buttons, spin, ...) and clear input elements.
+                     *
+                     * @return void
+                     */
                     freeGui: function () {
                         $(btns.close).removeAttr('disabled');
                         $(btns.save).button('reset');
@@ -179,9 +198,14 @@ define([
                 },
                 render: function () {
                     var self = this,
-                        dlg = self.dlgSel;
+                        dlg = self.dlgSel,
+                        tpl,
+                        vars = {
+                            "unit_form_title": I18nObject.unit_form_title
+                        };
                     if (!self.mInitialized) {
-                        this.$el.append(viewTemplate);
+                        tpl = _.template(viewTemplate, vars);
+                        this.$el.append(tpl);
                         $(dlg).modal({
                             show: false
                         }).on('hide',function () {

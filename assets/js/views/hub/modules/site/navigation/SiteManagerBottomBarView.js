@@ -4,10 +4,9 @@ define([
     'backbone',
     'stateMachine',
     'erp',
-    'viewManager',
     'bootMetro',
     'text!/templates/hub/modules/site/navigation/bottom_bar.html'
-], function ($, _, Backbone, StateMachine, Erp, ViewManager, MetroUi, bottombarTemplate) {
+], function ($, _, Backbone, StateMachine, Erp, MetroUi, bottombarTemplate) {
     /*var BottomBarHubView = Backbone.View.extend({
      el: $("#pageFooter"),
      render: function () {
@@ -17,7 +16,7 @@ define([
      });
      return BottomBarHubView;*/
     var erp = window.Erp,
-        viewManager,
+        mediator = erp.mediator,
         createStateMachine = function(view) {
             var elt = view.$el;
             _.extend(elt, Backbone.StateMachine, Backbone.Events, {
@@ -28,7 +27,10 @@ define([
 
                 transitions: {
                     'init': {
-                        'initialized': {enterState: 'visible'}
+                        'initialized': {
+                            enterState: 'visible',
+                            callbacks: ['initClickHandlers']
+                        }
                     },
                     'visible': {
                         'hide': {enterState: 'hidden'}
@@ -39,19 +41,26 @@ define([
                 },
                 doShow: function () {
                     elt.fadeIn(fxDuration, function () {
-                        $(view.el).off('click').on('click', function () {
+                        /*$(view.el).off('click').on('click', function () {
                             elt.trigger('hide');
                             setTimeout(function () {
                                 elt.trigger('show');
                             }, 3000);
-                        });
+                        });*/
                     });
 
                 },
                 doHide: function () {
                     elt.fadeOut(fxDuration, function () {
-                        $(view.el).off('click').on('click', function () {
+                       /*$(view.el).off('click').on('click', function () {
                             elt.trigger('show');
+                        });*/
+                    });
+                },
+                initClickHandlers: function() {
+                    mediator.on("site:bottombar:showing", function() {
+                        $("#addDialNavBarBtn").on('click', function() {
+                            mediator.publish("nav:bottom:add:click");
                         });
                     });
                 }
@@ -67,7 +76,7 @@ define([
             render: function () {
                 this.$el.html(bottombarTemplate);
                 this.$el.fadeIn(fxDuration);
-                this.$el.trigger('site:bottombar:showing');
+                mediator.publish('site:bottombar:showing');
             },
             initialize: function () {
                 createStateMachine(this);

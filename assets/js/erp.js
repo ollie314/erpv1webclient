@@ -1,6 +1,6 @@
 define([
     'browserDetect',
-    'mediator',
+    'mediator'
 ], function (BrowserDetect, Mediator) {
 
     function Erp() {
@@ -76,7 +76,9 @@ define([
         HUB_VIEW: "hubView",
         SITE_MANAGER_LIST_VIEW: 'siteManagerListView',
         SITE_MANAGER_BOTTOM_BAR: 'siteManagerBottomBarView',
-        SITE_MANAGER_LIST_FILTER_VIEW: 'siteManagerListFilterView'
+        SITE_MANAGER_LIST_FILTER_VIEW: 'siteManagerListFilterView',
+        SITE_MANAGER_LIST_VIEW_BY_DATE: 'siteManagerListFilterViewByDate',
+        SITE_MANAGER_LIST_VIEW_BY_SIE: 'siteManagerListFilterViewBySite'
     };
 
     Erp.Utils = {

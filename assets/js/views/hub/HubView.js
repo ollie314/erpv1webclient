@@ -4,13 +4,13 @@ define([
     'backbone',
     'bootMetro',
     'erp',
-    'mediator',
-    'viewManager',
     'views/navigation/topnav/UserNavView',
     'views/navigation/bottomnav/BottomBarHubView',
     'views/sidebars/help/SidebarHelpSimpleView',
     'text!/templates/hub/hub.html'
-], function ($, _, Backbone, MetroUi, Erp, Mediator, ViewManager, UserNavView, BottomBarHubView, SidebarHelpSimpleView, hubTemplate) {
+], function ($, _, Backbone, MetroUi,
+             Erp, UserNavView, BottomBarHubView,
+             SidebarHelpSimpleView, hubTemplate) {
     var erp = window.Erp,
         fxDuration = 1000,
         viewManager = erp.viewManager,
