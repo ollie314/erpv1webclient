@@ -61,7 +61,7 @@ define([
                     setTimeout(function () {
                         // TODO : fi this since we may have to render this view under another DOM element
                         $("table.erp-listing tbody", "#listBySite").append($(that.template));
-                        $("table.erp-listing tbody tr:first").addClass("success");
+                        //$("table.erp-listing tbody tr:first").addClass("success");
                     }, 500);
                 });
 //                $("table.erp-listing tbody", "#listBySite").append($(that.template));
