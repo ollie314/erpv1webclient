@@ -17,6 +17,7 @@ define([
     'text!/templates/connection/signin.html'
 ], function ($, _, Backbone, MetroUi, Mediator, Erp, AnonNavView, SidebarHelpAuthentView, signinTemplate) {
     var mediator = window.Erp.mediator,
+        success = false,
         initNavbars = function () {
             var anonView = new AnonNavView(),
                 sidebarHelpAuthentView = new SidebarHelpAuthentView();
@@ -73,6 +74,7 @@ define([
                                 400: function (data, errorText, reason) {
                                     alert("The mail format is not valid");
                                     validResponse = false;
+                                    success = false;;
                                     mediator.publish(Erp.Events.AJAX_LOADING_FAILURE);
                                     mediator.publish(Erp.Events.AUTHENT_FAILURE);
                                     return false;
@@ -91,13 +93,14 @@ define([
                                     }
                                     validResponse = false;
                                     mediator.publish(Erp.Events.AUTHENT_FAILURE);
+                                    success = false;
                                     return false;
                                 },
                                 200: function (data, statusCode, jqXhr) {
                                     // TODO : use data to set up the application to indicate that the user has been logged in
                                     document.location.href += "#hub";
                                     validResponse = true;
-
+                                    success = true;
                                     mediator.publish(Erp.Events.AUTHENT_SUCCESS);
                                     return false;
                                 }
@@ -116,6 +119,10 @@ define([
                                 }
                                 mediator.publish(Erp.Events.AJAX_LOADING_COMPLETE);
                                 btn.button('reset');
+                                if(success) {
+                                    document.location.href = "#hub";
+                                    document.location.reload();
+                                }
                             },
                             error: function (status, xhr, errorThrown) {
                                 // WARN : fire before statusCode handler
