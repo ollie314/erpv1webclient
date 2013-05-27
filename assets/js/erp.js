@@ -1,7 +1,8 @@
 define([
     'browserDetect',
-    'mediator'
-], function (BrowserDetect, Mediator) {
+    'mediator',
+    'erpconfig'
+], function (BrowserDetect, Mediator, ErpConfig) {
 
     function Erp() {
         this.runMode = 0;
@@ -92,6 +93,6 @@ define([
     };
 
     Erp.initialize();
-
+    Erp.config = new ErpConfig();
     return Erp;
 });
