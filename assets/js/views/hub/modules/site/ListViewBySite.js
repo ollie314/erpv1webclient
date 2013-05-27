@@ -152,7 +152,10 @@ define([
                         site_label: I18nObject.site_label,
                         subsite_label: I18nObject.subsite_label,
                         concern_label: I18nObject.concern_label,
-                        client_label: I18nObject.client_label
+                        client_label: I18nObject.client_label,
+                        subsite_input_placeholder : I18nObject.subsite_input_placeholder,
+                        client_input_placeholder : I18nObject.client_input_placeholder,
+                        concern_input_placeholder : I18nObject.concern_input_placeholder
                     }
                 //this.$el.html(eltTemplate);
                 tpl = _.template(eltTemplate, vars);

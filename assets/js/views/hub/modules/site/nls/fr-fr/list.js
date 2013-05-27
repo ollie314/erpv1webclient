@@ -20,5 +20,8 @@ define({
     site_label: "Ouvrage",
     subsite_label: "Sous ouvrage",
     concern_label: "Concerne",
-    client_label: "Client"
+    client_label: "Client",
+    subsite_input_placeholder: "Sous ouvrage",
+    concern_input_placeholder: "Client concerne / responsable",
+    client_input_placeholder: "Nom ou code du client"
 });

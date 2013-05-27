@@ -20,5 +20,9 @@ define({
     site_label: "Site",
     subsite_label: "Sub site",
     concern_label: "Client",
-    client_label: "Responsible"
+    client_label: "Responsible",
+    site_input_placeholder: "Site",
+    subsite_input_placeholder: "SubSite",
+    concern_input_placeholder: "Responsible",
+    client_input_placeholder: "Client code / name"
 });
