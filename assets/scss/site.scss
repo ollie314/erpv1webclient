@@ -141,3 +141,32 @@
   width: auto;
   padding-right: 20px;
 }
+
+div.info {
+  background-color: #EBDDE2;
+  &.last {
+    margin-bottom: 5px;
+  }
+  &.filter-top {
+    background-color: #842DCE;
+    color: white;
+  }
+}
+
+.erp-listing {
+  &.site-date-table-entry {
+    width:50px;
+  }
+  &.site-unit-table-entry {
+    width:50px;
+  }
+  &.site-qty-table-entry {
+    width: 50px;
+  }
+  &.site-price-table-entry {
+    width: 80px;
+  }
+  &.site-total-table-entry {
+    width: 80px;
+  }
+}

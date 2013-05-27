@@ -23,5 +23,7 @@ define({
     client_label: "Client",
     subsite_input_placeholder: "Sous ouvrage",
     concern_input_placeholder: "Client concerne / responsable",
-    client_input_placeholder: "Nom ou code du client"
+    client_input_placeholder: "Nom ou code du client",
+    delete_item_label: "Supprimer l'element",
+    duplicate_item_label: "Dupliquer l'element"
 });

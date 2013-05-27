@@ -9,7 +9,7 @@
             </div>
         </form>
         <div class="pull-right">
-            Help
+            <%= help_label %>
         </div>
     </div>
 </div>
@@ -23,19 +23,20 @@
                         <input type="checkbox"><span class="metro-checkbox"></span>
                     </label>
                 </th>
-                <th>Ouvrage</th>
-                <th>Sous ouvrage</th>
-                <th>Concerne</th>
-                <th>Client / responsable</th>
-                <th>Code - Libell&eacute;</th>
-                <th>Qt&eacute;</th>
-                <th>Prix/u</th>
-                <th>Total</th>
-                <th>Action</th>
+                <th><%= site_table_title %></th>
+                <!--<th>Sous ouvrage</th>
+                <th>Concerne</th>-->
+                <th><%= client_table_title %></th>
+                <th><%= label_table_title %></th>
+                <th><%= unit_table_title %></th>
+                <th><%= quantity_table_title %></th>
+                <th><%= price_table_title %></th>
+                <th><%= total_table_title %></th>
+                <th><%= action_table_title %></th>
             </tr>
             </thead>
             <tbody>
-            <tr>
+            <!--<tr>
                 <td class="align-center">
                     <label class="checkbox">
                         <input type="checkbox"><span class="metro-checkbox"></span>
@@ -86,7 +87,7 @@
                         <i class="icon-remove"></i>
                     </a>
                 </td>
-            </tr>
+            </tr>-->
             <tr>
                 <td class="align-center">
                     <label class="checkbox">
@@ -97,10 +98,10 @@
                     <input type="text" value="" name="site[]" id="site_2" data-provide="typeahead"
                            data-source='["205-Corthay", "210-Simnet"]'/>
                 </td>
-                <td>
+                <!--<td>
                     <input type="text" value="" name="subsite[]" id="subsite_2" data-provide="typeahead"
                            data-source='["205-Corthay", "210-Simnet"]'/>
-                </td>
+                </td>-->
                 <td>
                     <input type="text" value="" name="client[]" id="client_2" data-provide="typeahead"
                            data-source='["205-Corthay", "210-Simnet"]'/>
@@ -111,7 +112,7 @@
                 </td>
                 <td>
                     <input type="text" value="" name="unit[]" id="unit_2" data-provide="typeahead"
-                           data-source='["pce", "kg", "m2"]'/>
+                           data-source='["pce", "kg", "m2", "ml", "m3"]'/>
                 </td>
                 <td class="span1">
                     <input class="input-block-level" type="text" value="" name="qty[]" id="qty_2"/>
@@ -120,20 +121,20 @@
                     <input class="input-block-level" type="text" value="" name="unit_price[]" id="unit_price_2"/>
                 </td>
                 <td>
-                    <input class="input-block-level" type="text" value="" name="total_price[]" id="total_price_2"/>
+                    <input class="input-block-level uneditable-input" type="text" value="" name="total_price[]" id="total_price_2" readonly/>
                 </td>
                 <td>
-                    <a href="#" class="btn btn-small">
+                    <!--<a href="#" class="btn btn-small">
                         <i class="icon-search"></i>
                     </a>
                     <a href="#" class="btn btn-small">
                         <i class="icon-report">&#x0038;</i>
+                    </a>-->
+                    <a class="btn btn-small" href="#" data-item-id="<%= id %>" id="dateDuplicateMaterialItemDialog" title="<%= duplicate_item_label %>">
+                        <i class="icon-edit">&#x0038;</i>
                     </a>
-                    <a class="btn btn-small" href="#">
-                        <i class="icon-edit">&#xe164;</i>
-                    </a>
-                    <a class="action delete btn btn-small" data-toggle="modal" href="#deleteConfirm"
-                       data-target="#deleteConfirm">
+                    <a class="action delete btn btn-small" data-toggle="modal" href="#deleteConfirm" title="<%= delete_item_label %>"
+                       data-target="#deleteConfirm" data-item-id="<%= id %>">
                         <i class="icon-remove"></i>
                     </a>
                 </td>

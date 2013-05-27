@@ -24,5 +24,7 @@ define({
     site_input_placeholder: "Site",
     subsite_input_placeholder: "SubSite",
     concern_input_placeholder: "Responsible",
-    client_input_placeholder: "Client code / name"
+    client_input_placeholder: "Client code / name",
+    delete_item_label: "Delete item",
+    duplicate_item_label: "Duplicate item"
 });

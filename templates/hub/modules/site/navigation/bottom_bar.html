@@ -1,20 +1,30 @@
 <div class="win-ui-dark win-commandlayout navbar-fixed-bottom">
     <div class="container">
         <div class="row-fluid">
-            <div class="span6 align-left">
+            <div class="span3 align-left">
+                <button class="win-command" data-toggle="modal" data-href="#hub">
+                    <span class="win-commandimage win-commandring">&#xe183;</span>
+                    <span class="win-label">Home</span>
+                </button>
                 <button class="win-command" data-toggle="modal" data-target="#searchForm">
                     <span class="win-commandimage win-commandring">&#x0067;</span>
                     <span class="win-label">Search</span>
                 </button>
             </div>
-            <div class="span6 align-right">
+            <div class="span2 offset1">
+                <button class="win-command" data-toggle="modal" data-href="#hub/site-manager">
+                    <span class="win-commandimage win-commandring">&#xe1aa;</span>
+                    <span class="win-label">Material</span>
+                </button>
+                <button class="win-command" data-toggle="modal" data-target="#hub/timesheets">
+                    <span class="win-commandimage win-commandring">&#xe13a;</span>
+                    <span class="win-label">Timesheet</span>
+                </button>
+            </div>
+            <div class="span4 align-right offset1">
                 <button class="win-command" data-toggle="modal" data-target="#deleteConfirm">
                     <span class="win-commandimage win-commandring">&#xE001;</span>
                     <span class="win-label">Delete</span>
-                </button>
-                <button class="win-command" id="addDialNavBarBtn" data-toggle="modal" data-target="#addDialog">
-                    <span class="win-commandimage win-commandring">&#xe03e;</span>
-                    <span class="win-label">Add</span>
                 </button>
                 <hr class="win-command">
                 <button class="win-command" data-toggle="modal" data-target="#saveDialog">

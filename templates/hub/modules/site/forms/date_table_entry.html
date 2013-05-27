@@ -1,0 +1,45 @@
+<tr>
+    <td class="align-center">
+        <label class="checkbox">
+            <input type="checkbox"><span class="metro-checkbox"></span>
+        </label>
+    </td>
+    <td>
+        <input type="text" value="" name="site[]" id="site_2" data-provide="typeahead"
+               data-source='["205-Corthay", "210-Simnet"]'/>
+    </td>
+    <td>
+        <input type="text" value="" name="subsite[]" id="subsite_2" data-provide="typeahead"
+               data-source='["205-Corthay", "210-Simnet"]'/>
+    </td>
+    <td>
+        <input type="text" value="" name="client[]" id="client_2" data-provide="typeahead"
+               data-source='["205-Corthay", "210-Simnet"]'/>
+    </td>
+    <td>
+        <input type="text" value="" name="caption[]" id="caption_2" data-provide="typeahead"
+               data-source='["Ecommerce", "ERP", "CRM"]'/>
+    </td>
+    <td>
+        <input type="text" value="" name="unit[]" id="unit_2" data-provide="typeahead"
+               data-source='["pce", "kg", "m2"]'/>
+    </td>
+    <td class="span1">
+        <input class="input-block-level" type="text" value="" name="qty[]" id="qty_2"/>
+    </td>
+    <td>
+        <input class="input-block-level" type="text" value="" name="unit_price[]" id="unit_price_2"/>
+    </td>
+    <td>
+        <input class="input-block-level" type="text" value="" name="total_price[]" id="total_price_2"/>
+    </td>
+    <td>
+        <a class="btn btn-small" href="#" data-item-id="<%= id %>" id="dateDuplicateMaterialItemDialog" title="<%= duplicate_item_label %>">
+            <i class="icon-edit">&#x0038;</i>
+        </a>
+        <a class="action delete btn btn-small" data-toggle="modal" href="#deleteConfirm" title="<%= delete_item_label %>"
+           data-target="#deleteConfirm" data-item-id="<%= id %>">
+            <i class="icon-remove"></i>
+        </a>
+    </td>
+</tr>

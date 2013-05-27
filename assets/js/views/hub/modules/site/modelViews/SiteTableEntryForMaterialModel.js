@@ -29,7 +29,9 @@ define([
             quantity_label_placeholder: I18nObject.quantity_label_placeholder,
             unit_label_placeholder: I18nObject.unit_label_placeholder,
             price_label_placeholder: I18nObject.price_label_placeholder,
-            subtotal_label_placeholder: I18nObject.subtotal_label_placeholder
+            subtotal_label_placeholder: I18nObject.subtotal_label_placeholder,
+            duplicate_item_label: I18nObject.duplicate_item_label,
+            delete_item_label: I18nObject.delete_item_label
         },
         SiteTableEntryForMaterialModel= Backbone.View.extend({
             scopeContainer: "",
@@ -62,6 +64,7 @@ define([
                         // TODO : fi this since we may have to render this view under another DOM element
                         $("table.erp-listing tbody", "#listBySite").append($(that.template));
                         //$("table.erp-listing tbody tr:first").addClass("success");
+                        $(".date.material-entry:last").datepicker();
                     }, 500);
                 });
 //                $("table.erp-listing tbody", "#listBySite").append($(that.template));
