@@ -76,10 +76,10 @@ define([
                 bottomBarHubView;
             userNavView.render();
             sidebarHelpSimpleView.render();
-            if (!viewManager.has(viewNames.HUB_BOTTOM_BAR)) {
-                viewManager.push(viewNames.HUB_BOTTOM_BAR, new BottomBarHubView());
+            if (!erp.viewManager.has(viewNames.HUB_BOTTOM_BAR)) {
+                erp.viewManager.push(viewNames.HUB_BOTTOM_BAR, new BottomBarHubView());
             }
-            bottomBarHubView = viewManager.get(viewNames.HUB_BOTTOM_BAR);
+            bottomBarHubView = erp.viewManager.get(viewNames.HUB_BOTTOM_BAR);
             bottomBarHubView.render();
         },
         HubView = Backbone.View.extend({
@@ -96,7 +96,7 @@ define([
                 var self = this,
                     $elt = self.$el;
                 //erp.mediator.publish('hub:rendering:start', {date: new Date().getTime(), target: $elt});
-                if ($elt.currentState != 'visible') {
+                if (self.currentState != 'visible') {
                     $elt.fadeOut(fxDuration, function() {
                         $elt.html(hubTemplate);
                         $elt.fadeIn(fxDuration, function() {
