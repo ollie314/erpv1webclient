@@ -16,7 +16,8 @@ define([
     'views/sidebars/help/SidebarHelpAuthentView',
     'text!/templates/connection/signin.html'
 ], function ($, _, Backbone, MetroUi, Mediator, Erp, AnonNavView, SidebarHelpAuthentView, signinTemplate) {
-    var mediator = window.Erp.mediator,
+    var erp = window.Erp,
+        mediator = erp.mediator,
         success = false,
         initNavbars = function () {
             var anonView = new AnonNavView(),
@@ -63,7 +64,7 @@ define([
                         }
                         btn.button('loading');
                         $.ajax({
-                            url: "http://127.0.0.1:3000/api/connection/signin.json",
+                            url: Erp.config.getBackendUrlForEndpoint("api/connection/signin"),
                             data: form.serialize(),
                             dataType: 'json',
                             type: "POST",
