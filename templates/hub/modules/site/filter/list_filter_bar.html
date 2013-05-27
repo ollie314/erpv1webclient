@@ -2,7 +2,7 @@
     <ul class="nav nav-pills">
         <li class="dropdown">
             <a class="dropdown-toggle accent-color" data-toggle="dropdown" href="#">
-                All projects
+                <%= all_employee_label %>
                 <b class="caret" href="#"></b>
             </a>
             <ul id="projects-filter" class="dropdown-menu">
@@ -15,40 +15,40 @@
         </li>
         <li class="dropdown">
             <a class="dropdown-toggle accent-color" data-toggle="dropdown" href="#">
-                All clients
+                <%= all_client_label %>
                 <b class="caret" href="#"></b>
             </a>
-            <ul id="budget-filter" class="dropdown-menu">
+            <ul id="client-filter" class="dropdown-menu">
                 <li><a href="#">All clients</a></li>
                 <li><a href="#">Corthay</a></li>
             </ul>
         </li>
         <li class="dropdown">
             <a class="dropdown-toggle accent-color" data-toggle="dropdown" href="#">
-                All Prestataires
+                <%= all_provider_label %>
                 <b class="caret" href="#"></b>
             </a>
-            <ul id="budget-filter" class="dropdown-menu">
+            <ul id="provider-filter" class="dropdown-menu">
                 <li><a href="#">All prestataires</a></li>
                 <li><a href="#">Simnet</a></li>
             </ul>
         </li>
         <li class="dropdown">
             <a class="dropdown-toggle accent-color" data-toggle="dropdown" href="#">
-                All employee
+                <%= all_employee_label %>
                 <b class="caret" href="#"></b>
             </a>
-            <ul id="budget-filter" class="dropdown-menu">
+            <ul id="employee-filter" class="dropdown-menu">
                 <li><a href="#">All employee</a></li>
                 <li><a href="#">G. Simon</a></li>
                 <li><a href="#">M. Simon</a></li>
                 <li><a href="#">L. Simon</a></li>
             </ul>
         </li>
-        <li class=""><a>&nbsp;|&nbsp;<span>Sort by&nbsp;</span></a></li>
+        <li class=""><a>&nbsp;|&nbsp;<span><%= sort_by_label %>&nbsp;</span></a></li>
         <li class="dropdown">
             <a class="dropdown-toggle accent-color" data-toggle="dropdown" href="#">
-                Project name
+                <%= project_name_label %>
                 <b class="caret" href="#"></b>
             </a>
             <ul id="sort-filter" class="dropdown-menu">
