@@ -7,13 +7,26 @@ define([
     'views/navigation/topnav/UserNavView',
     'views/navigation/bottomnav/BottomBarHubView',
     'views/sidebars/help/SidebarHelpSimpleView',
-    'text!/templates/hub/hub.html'
+    'text!/templates/hub/hub.html',
+    'i18n!views/hub/modules/nls/hub'
 ], function ($, _, Backbone, MetroUi,
              Erp, UserNavView, BottomBarHubView,
-             SidebarHelpSimpleView, hubTemplate) {
+             SidebarHelpSimpleView, hubTemplate, I18nObject) {
     var erp = window.Erp,
         fxDuration = 1000,
-        viewManager = erp.viewManager,
+        tplVars = {
+            modules_label:I18nObject.modules_label,
+            material_manager_label:I18nObject.material_manager_label,
+            material_manager_caption:I18nObject.material_manager_caption,
+            timesheet_manager_label:I18nObject.timesheet_manager_label,
+            timesheet_manager_caption:I18nObject.timesheet_manager_caption,
+            addressbook_label:I18nObject.addressbook_label,
+            addressbook_caption:I18nObject.addressbook_caption,
+            manage_modules_label:I18nObject.manage_modules_label,
+            manage_modules_caption:I18nObject.manage_modules_caption,
+            install_new_module_label:I18nObject.install_new_module_label,
+            check_for_update_label:I18nObject.check_for_update_label
+        },
         viewNames = Erp.ViewNames,
         setupStateMachine = function(view, elt) {
             _.extend(elt, Backbone.StateMachine, Backbone.Events, {
@@ -43,14 +56,14 @@ define([
                 doShow: function () {
                     var mediator = window.Erp.mediator;
                     elt.fadeIn(fxDuration, function () {
-                        //mediator.publish('hub:rendering:complete');
+                        mediator.publish('hub:rendering:complete');
                     });
                 },
                 doHide: function () {
                     var mediator = window.Erp.mediator;
                     elt.fadeOut(fxDuration, function () {
                     });
-                    //mediator.publish("application:loading:start");
+                    mediator.publish("hub:hiding");
                 }
             });
             elt.on('shown', function () {
@@ -94,11 +107,12 @@ define([
             },
             render: function () {
                 var self = this,
-                    $elt = self.$el;
+                    $elt = self.$el,
+                    compiledTpl = _.template(hubTemplate, tplVars);
                 //erp.mediator.publish('hub:rendering:start', {date: new Date().getTime(), target: $elt});
                 if (self.currentState != 'visible') {
                     $elt.fadeOut(fxDuration, function() {
-                        $elt.html(hubTemplate);
+                        $elt.html(compiledTpl);
                         $elt.fadeIn(fxDuration, function() {
                             erp.mediator.publish('hub:rendering:complete');
                         });
