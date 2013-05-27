@@ -92,6 +92,10 @@ require.config({
             deps : [],
             exports : 'DateLib'
         },
+        mousewheel : {
+            deps: [],
+            exports: 'mouseWheel'
+        },
         bootstrapDateRangepicker : {
             deps : ['jquery','bootstrap'],
             exports : "DaterangePicker"
