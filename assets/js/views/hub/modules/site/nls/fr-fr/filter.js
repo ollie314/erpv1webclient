@@ -1,5 +1,5 @@
 define({
-    all_project_label: "Tous les projets",
+    all_project_label: "Tous les ouvrages",
     all_client_label: "Tous les clients",
     all_provider_label: "Tous les prestataires",
     all_employee_label: "Tous les employes",
