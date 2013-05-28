@@ -1,0 +1,31 @@
+<div id="siteAddSiteForm" class="modal message hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h3><%= site_form_title %></h3>
+    </div>
+    <div class="modal-body">
+        <!--
+            TODO : same form ids may cause some disturbing
+        -->
+        <form class="form" action="#" method="post" id="addSiteForm">
+            <div class="controls">
+                <input class="span6 erp-input"  type="text" id="inputCodeCode" placeholder="<%= input_site_name_placeholder %>">
+            </div>
+            <div class="controls">
+                <input class="span6 erp-input" type="text" id="inputSiteOwner" placeholder="<%= input_site_owner_placeholder %>">
+            </div>
+            <div class="controls">
+                <input class="span6 erp-input" type="text" id="inputSiteResponsible" placeholder="<%= input_site_responsible_placeholder %>">
+            </div>
+            <div class="controls">
+                <textarea class="span6 erp-input" id="inputSiteDescription" placeholder="<%= description_placeholder %>"></textarea>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-large btn dismiss" id="codeCloseBtn" data-dismiss="modal"><%= close %></button>
+        <button class="btn btn-large btn-info btn save" id="codeSaveAndHideBtn" data-complete-text="Saved !" data-toggle="button" data-loading-text="<%= processing_invite %> ..."><%= save %></button>
+        <button class="btn btn-large btn-primary btn save" id="codeSaveBtn" data-complete-text="Saved !" data-toggle="button" data-loading-text="<%= processing_invite %> ..."><%= save_and_add %></button>
+    </div>
+</div>

@@ -10,6 +10,8 @@ define([
     'erp',
     'views/utils/SpinView',
     'views/hub/modules/site/forms/AddProviderFormView',
+    'views/hub/modules/site/forms/AddUnitFormView',
+    'views/hub/modules/site/forms/AddCodeFormView',
     'views/hub/modules/site/ListView',
     'views/connection/SigninView',
     'views/manager/UsersAndGroupsView',
@@ -17,7 +19,7 @@ define([
 ], function ($, _, Backbone, ViewManager,
              StateMachine, Mediator, MetroUi,
              BrowserDetect, Erp, SpinView,
-             AddProviderFormView, ListView,
+             AddProviderFormView, AddUnitFormView, AddCodeFormView, ListView,
              SigninView, UsersAndGroupsView, HubView /*, FooterView*/) {
 
     String.isNullOrEmpty = function (str) {
@@ -55,7 +57,9 @@ define([
             siteManager: function () {
                 var listView = new ListView(),
                     forms = {
-                        addProvider: new AddProviderFormView()
+                        addProvider: new AddProviderFormView(),
+                        addUnit: new AddUnitFormView(),
+                        addCode: new AddCodeFormView()
                     };
                 listView.forms = forms;
                 listView.render();

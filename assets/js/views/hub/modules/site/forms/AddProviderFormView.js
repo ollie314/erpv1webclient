@@ -11,13 +11,25 @@ define([
     'erp',
     'bootMetro',
     'models/provider/ProviderModel',
-    'text!/templates/hub/modules/site/forms/add_provider_form.html'
-], function ($, _, Backbone, Erp, MetroUi, Provider, viewTemplate) {
+    'text!/templates/hub/modules/site/forms/add_provider_form.html',
+    'i18n!views/hub/modules/site/nls/dialog'
+], function ($, _, Backbone, Erp, MetroUi, Provider, viewTemplate, I18nObject) {
         var erp = window.Erp,
             mediator = erp.mediator,
             btns = {
                 close: "#providerCloseBtn",
                 save: "#providerSaveBtn"
+            },
+            vars = {
+                provider_form_title: I18nObject.provider_form_title,
+                input_provider_name_placeholder: I18nObject.input_provider_name_placeholder,
+                input_provider_code_placeholder: I18nObject.input_provider_code_placeholder,
+                more_info_placeholder: I18nObject.more_info_placeholder,
+                save: I18nObject.save,
+                save_and_add: I18nObject.save_and_add,
+                close: I18nObject.close,
+                processing_invite: I18nObject.processing_invite,
+                description_placeholder: I18nObject.description_placeholder
             },
             initStateMachine = function (view) {
                 _.extend(view, Backbone.StateMachine, Backbone.Events, {
@@ -167,7 +179,7 @@ define([
                     view.render();
                 });
             },
-            SiteMainSidebarView = Backbone.View.extend({
+            AddProviderFormView = Backbone.View.extend({
                 dlgSel: "#siteAddProviderForm",
                 mInitialized: false,
                 containerSel: "#siteAddProviderForm",
@@ -179,9 +191,10 @@ define([
                 },
                 render: function () {
                     var self = this,
-                        dlg = self.dlgSel;
+                        dlg = self.dlgSel
+                        _tpl = _.template(viewTemplate, vars);
                     if (!self.mInitialized) {
-                        this.$el.append(viewTemplate);
+                        this.$el.append(_tpl);
                         $(dlg).modal({
                             show: false
                         }).on('hide',function () {
@@ -203,7 +216,6 @@ define([
                     this.trigger('show');
                 }
             });
-        return SiteMainSidebarView;
+        return AddProviderFormView;
     }
-)
-;
+);

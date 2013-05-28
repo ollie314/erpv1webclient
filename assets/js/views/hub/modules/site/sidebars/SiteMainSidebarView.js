@@ -31,6 +31,15 @@ define([
                 $(".site-add-provider-btn").on('click', function () {
                     mediator.publish("site:provider:form:show");
                 });
+                $(".site-add-btn").on('click', function() {
+                    mediator.publish("site:unit:form:show");
+                });
+                $(".site-add-code-btn").on('click', function() {
+                    mediator.publish("site:code:form:show");
+                });
+                $(".site-add-site-btn").on('click', function() {
+                    mediator.publish("site:code:form:show");
+                });
             }
         });
     return SiteMainSidebarView;
