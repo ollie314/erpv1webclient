@@ -17,7 +17,6 @@ define({
     unit_label_placeholder: "Choisir une unite",
     price_label_placeholder: "Choisir le prix de l'article",
     subtotal_label_placeholder: "Sous total",
-    site_label: "Ouvrage",
     subsite_label: "Sous ouvrage",
     concern_label: "Concerne",
     client_label: "Client",
@@ -25,5 +24,13 @@ define({
     concern_input_placeholder: "Client concerne / responsable",
     client_input_placeholder: "Nom ou code du client",
     delete_item_label: "Supprimer l'element",
-    duplicate_item_label: "Dupliquer l'element"
+    duplicate_item_label: "Dupliquer l'element",
+    site_table_title: "Ouvrage",
+    client_table_title: "Client",
+    unit_table_title: "Unite",
+    quantity_table_title: "Quantite",
+    price_table_title: "Prix",
+    total_table_title: "Total",
+    action_table_title: "Action",
+    help_label: "Aide"
 });

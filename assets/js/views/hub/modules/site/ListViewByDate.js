@@ -5,10 +5,25 @@ define([
     'bootMetro',
     'bootMetroCharms',
     'erp',
-    'text!/templates/hub/modules/site/date_list.html'
-], function ($, _, Backbone, MetroUi, BootMetroChams, Erp, eltTemplate) {
+    'text!/templates/hub/modules/site/date_list.html',
+    'i18n!views/hub/modules/site/nls/list'
+], function ($, _, Backbone, MetroUi, BootMetroChams, Erp, eltTemplate, I18nObject) {
     var erp = window.Erp,
         containerSel = "#listByDate",
+        tplVars = {
+            site_table_title: I18nObject.site_table_title,
+            help_label: I18nObject.help_label,
+            client_table_title: I18nObject.client_table_title,
+            unit_table_title: I18nObject.unit_table_title,
+            quantity_table_title: I18nObject.quantity_table_title,
+            price_table_title: I18nObject.price_table_title,
+            total_table_title: I18nObject.total_table_title,
+            action_table_title: I18nObject.action_table_title,
+            label_table_title: I18nObject.label_table_title,
+            id: 0,
+            delete_item_label: I18nObject.delete_item_label,
+            duplicate_item_label: I18nObject.duplicate_item_label
+        },
         mediator = erp.mediator,
         ListViewByDate = Backbone.View.extend({
             el: $("#listByDate"),
@@ -77,7 +92,8 @@ define([
             },
             render: function () {
                 //this.$el.html(eltTemplate);
-                $(containerSel).html(eltTemplate);
+                var tpl = _.template(eltTemplate, tplVars);
+                $(containerSel).html(tpl);
             }
         });
     return ListViewByDate;

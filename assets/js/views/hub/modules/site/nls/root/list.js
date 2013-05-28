@@ -26,5 +26,13 @@ define({
     concern_input_placeholder: "Responsible",
     client_input_placeholder: "Client code / name",
     delete_item_label: "Delete item",
-    duplicate_item_label: "Duplicate item"
+    duplicate_item_label: "Duplicate item",
+    site_table_title: "Site",
+    client_table_title: "Client",
+    unit_table_title: "Unit",
+    quantity_table_title: "Quantity",
+    price_table_title: "Price",
+    total_table_title: "Total",
+    action_table_title: "Action",
+    help_label: "Help"
 });
