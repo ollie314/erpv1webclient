@@ -14,10 +14,10 @@ define([
      *
      * @type {*}
      */
-    var Code = Backbone.Collection.extend({
+    var Codes = Backbone.Collection.extend({
         model: Code,
         url: 'http://corthay.self.local:3000/api/codes',
         urlExtension: ".json"
     });
-    return Code;
+    return Codes;
 });
