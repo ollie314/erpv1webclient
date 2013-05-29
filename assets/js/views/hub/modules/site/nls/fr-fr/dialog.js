@@ -10,5 +10,9 @@ define({
     input_provider_name_placeholder: "Nom du fournisseur",
     more_info_placeholder: "Description",
     description_placeholder: "Description",
-    processing_invite: "En cours"
+    processing_invite: "En cours",
+    input_site_name_placeholder: "Nom de l'ouvrage",
+    input_site_owner_placeholder: "Client",
+    input_site_responsible_placeholder: "Responsable",
+    site_form_title: "Ajouter un nouvel ouvrage"
 });

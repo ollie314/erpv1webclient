@@ -10,5 +10,9 @@ define({
     input_provider_name_placeholder: "Name of the provider",
     more_info_placeholder: "Description",
     processing_invite: "Processing",
-    description_placeholder: "Description"
+    description_placeholder: "Description",
+    input_site_name_placeholder: "Name of the site",
+    input_site_owner_placeholder: "Owner of the site",
+    input_site_responsible_placeholder: "Responsible of the site",
+    site_form_title: "Add a new Site"
 });

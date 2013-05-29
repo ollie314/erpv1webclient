@@ -1,5 +1,5 @@
 /**
- * AddCodeFormView - dedicated to add code. This is a modal dialog.
+ * AddSiteFormView - dedicated to add site. This is a modal dialog.
  *
  * @author mlefebvre@simnetsa.ch
  * @version 0.1
@@ -10,26 +10,28 @@ define([
     'backbone',
     'erp',
     'bootMetro',
-    'models/code/CodeModel',
+    'models/site/SiteModel',
     'text!/templates/hub/modules/site/forms/add_site_form.html',
     'i18n!views/hub/modules/site/nls/dialog'
-], function ($, _, Backbone, Erp, MetroUi, Code, viewTemplate, I18nObject) {
+], function ($, _, Backbone, Erp, MetroUi, Site, viewTemplate, I18nObject) {
         var erp = window.Erp,
             mediator = erp.mediator,
             btns = {
-                close: "#codeCloseBtn",
-                save: "#codeSaveBtn"
+                close: "#siteCloseBtn",
+                save: "#siteSaveBtn",
+                saveAndContinue: "#siteSaveAndHideBtn"
             },
             vars = {
-                code_form_title: I18nObject.code_form_title,
-                input_code_name_placeholder: I18nObject.input_code_name_placeholder,
-                input_code_code_placeholder: I18nObject.input_code_code_placeholder,
-                more_info_placeholder: I18nObject.more_info_placeholder,
+                site_form_title: I18nObject.site_form_title,
+                input_site_name_placeholder: I18nObject.input_site_name_placeholder,
+                input_site_responsible_placeholder: I18nObject.input_site_responsible_placeholder,
+                input_site_owner_placeholder: I18nObject.input_site_owner_placeholder,
                 save: I18nObject.save,
                 save_and_add: I18nObject.save_and_add,
                 close: I18nObject.close,
                 processing_invite: I18nObject.processing_invite,
-                description_placeholder: I18nObject.description_placeholder
+                description_placeholder: I18nObject.description_placeholder,
+                site_form_title: I18nObject.site_form_title
             },
             initStateMachine = function (view) {
                 _.extend(view, Backbone.StateMachine, Backbone.Events, {
@@ -96,15 +98,15 @@ define([
                                 name= $("#inputSiteName").val(),
                                 owner = $("#inputSiteOwner").val(),// TODO L fix, to set up an hidden field to store id of the owner
                                 responsible = $("#inputSiteResponsible").val(),// TODO L fix, to set up an hidden field to store id of the reponsible
-                                info = $("#inputCodeDescription").val(),
+                                info = $("#inputSiteDescription").val(),
                                 site = new Site({
                                     name: name,
                                     owner: owner,
                                     responsible: responsible,
                                     description: info
                                 });
-                            view.model = code;
-                            result = code.save({
+                            view.model = site;
+                            result = site.save({
                                 // FIXME : due to a Backbone strange behavoir, handlers are not called. For now, we check the result of the process instead.
                                 success: function (model, response, options) {
                                     $(btns.save).button('complete');
@@ -156,7 +158,7 @@ define([
                     },
                     doShow: function () {
                         $(view.dlgSel).modal('show');
-                        $("#inputCodeName").focus(); // FIXME : doesn't work for now
+                        $("#inputSiteName").focus(); // FIXME : doesn't work for now
                     },
                     doClear: function () {
                         $(".erp-input", view.dlgSel).each(function (index, element) {
@@ -178,9 +180,9 @@ define([
                 });
             },
             AddSiteFormView = Backbone.View.extend({
-                dlgSel: "#siteAddCodeForm",
+                dlgSel: "#siteAddSiteForm",
                 mInitialized: false,
-                containerSel: "#siteAddCodeForm",
+                containerSel: "#siteAddSiteForm",
                 model: undefined,
                 el: $("#dialogPlaceholder"),
                 initialize: function () {
@@ -193,7 +195,7 @@ define([
                         _tpl = _.template(viewTemplate, vars);
 
                     if (!self.mInitialized) {
-                        this.$el.append(_tpl);
+                        $(this.el).append(_tpl);
                         $(dlg).modal({
                             show: false
                         }).on('hide',function () {
@@ -201,13 +203,13 @@ define([
                             }).on('hidden', function () {
                                 self.trigger('hide');
                             });
-                        $("#codeSaveBtn", dlg).on('click', function () {
+                        $("#siteSaveBtn", dlg).on('click', function () {
                             mediator.publish('site:site:form:saving:start', {container: dlg, resultAction: 'clear'});
                         });
-                        $("#codeSaveAndHideBtn", dlg).on('click', function () {
+                        $("#siteSaveAndHideBtn", dlg).on('click', function () {
                             mediator.publish('site:site:form:saving:start', {container: dlg, resultAction: 'close'});
                         });
-                        $(".btn", "#siteAddCodeForm").each(function (index, element) {
+                        $(".btn", "#siteAddSiteForm").each(function (index, element) {
                             $(element).button();
                         });
                         this.mInitialized = true;

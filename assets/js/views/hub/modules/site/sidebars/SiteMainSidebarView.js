@@ -38,7 +38,7 @@ define([
                     mediator.publish("site:code:form:show");
                 });
                 $(".site-add-site-btn").on('click', function() {
-                    mediator.publish("site:code:form:show");
+                    mediator.publish("site:site:form:show");
                 });
             }
         });
