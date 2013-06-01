@@ -1,0 +1,100 @@
+# generic files to ignore #
+###########################
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
+
+
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+
+# IDE Specific files #
+######################
+
+= Eclipse =
+===========
+.classpath
+.project
+.settings/
+proguard
+
+= Intellij =
+============
+.idea/
+*.iml
+*.ipr
+*.iws
+*~.nib
+
+= Maven =
+=========
+log/
+target/build/
+
+= netbeans =
+============
+nbproject/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+################################
+# Ignoring build and test data #
+################################
+build/
+report/
+.sass-cache
+
+*.class
+# built application files
+*.apk
+*.ap_
+*.pyc
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
