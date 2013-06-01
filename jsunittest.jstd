@@ -16,7 +16,7 @@ serve:
  - assets/css/erp.css
 
 proxy:
- - {matcher: "*", server: "http://corthay.self.local/src-test/index.html"}
+ - {matcher: "*", server: "http://erp.corthay.self.local/src-test/index.html"}
 
 plugin:
  - name: "coverage"

@@ -1,3 +1,4 @@
+/*global window*/
 define([
     'jquery',
     'underscore',
@@ -7,6 +8,9 @@ define([
     'bootMetro',
     'text!/templates/navigation/bottomnav/hub.html'
 ], function ($, _, Backbone, StateMachine, Erp, MetroUi, bottombarTemplate) {
+
+    'use strict';
+
     /*var BottomBarHubView = Backbone.View.extend({
      el: $("#pageFooter"),
      render: function () {
@@ -16,6 +20,7 @@ define([
      });
      return BottomBarHubView;*/
     var erp = window.Erp,
+        fxDuration = 1000,
         mediator = erp.mediator,
         viewManager,
         createStateMachine = function(view) {
@@ -60,7 +65,6 @@ define([
             elt.trigger('initialized');
             erp.viewManager.push(Erp.ViewNames.HUB_BOTTOM_BAR, view);
         },
-        fxDuration = 1000,
         BottomBarHubView = Backbone.View.extend({/*StatefulView.extend({*/
             el: $("#pageFooter"),
             debugStateMachine: true,

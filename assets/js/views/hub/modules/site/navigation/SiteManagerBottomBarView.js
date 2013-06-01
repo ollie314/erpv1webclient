@@ -48,25 +48,29 @@ define([
                     }
                 },
                 doShow: function () {
-                    elt.fadeIn(fxDuration, function () {
-                        /*$(view.el).off('click').on('click', function () {
-                            elt.trigger('hide');
-                            setTimeout(function () {
-                                elt.trigger('show');
-                            }, 3000);
-                        });*/
-                    });
+                    elt.fadeIn(fxDuration);
 
                 },
                 doHide: function () {
-                    elt.fadeOut(fxDuration, function () {
-                       /*$(view.el).off('click').on('click', function () {
-                            elt.trigger('show');
-                        });*/
-                    });
+                    elt.fadeOut(fxDuration);
                 },
                 initClickHandlers: function() {
                     mediator.on("site:bottombar:showing", function() {
+                        // arm save button click
+                        $("#saveDialog").on('click', function() {
+                            mediator.publish('site:nav:bottom:save:click');
+                        });
+
+                        // arm navigation buttons ...
+                        $(".win-command", "#siteManagerBottomBar").on('click', function() {
+                            var href = $(this).attr('data-href');
+                            if(null === href || undefined === href) {
+                                return;
+                            }
+                            document.location.href = href;
+                            return false;
+                        });
+
                         $("#addDialNavBarBtn").on('click', function() {
                             mediator.publish("nav:bottom:add:click");
                         });
