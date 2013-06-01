@@ -8,6 +8,7 @@ define([
     'bootMetro',
     'browserDetect',
     'erp',
+    'erploader',
     'views/utils/SpinView',
     'views/hub/modules/site/forms/AddProviderFormView',
     'views/hub/modules/site/forms/AddUnitFormView',
@@ -19,7 +20,7 @@ define([
     'views/hub/HubView'
 ], function ($, _, Backbone, ViewManager,
              StateMachine, Mediator, MetroUi,
-             BrowserDetect, Erp, SpinView,
+             BrowserDetect, Erp, ErpLoader, SpinView,
              AddProviderFormView, AddUnitFormView, AddCodeFormView, AddSiteFormView, ListView,
              SigninView, UsersAndGroupsView, HubView /*, FooterView*/) {
 
@@ -27,9 +28,10 @@ define([
         return (null == str || str == "");
     };
 
-    var initLoading = function () {
+    var mediator = window.Erp.mediator,
+        initLoading = function () {
             var spinView = new SpinView();
-            window.Erp.mediator.subscribe('hub:ready', function (data) {
+            mediator.subscribe('hub:ready', function (data) {
                 spinView.stop();
                 data.target.html(data.template);
                 data.target.fadeIn(1000);
@@ -56,6 +58,8 @@ define([
                 usersAndGroupsView.render();
             },
             siteManager: function () {
+                mediator.publish('hub:sitemodule:access:request', {module: "timesheets"});
+                // TODO : add lazy loading behavior
                 var listView = new ListView(),
                     forms = {
                         addProvider: new AddProviderFormView(),
@@ -67,10 +71,13 @@ define([
                 listView.render();
             },
             timesheets: function () {
-
+                // TODO : add lazy loading behavior
+                // fire event to inform about module access request.
+                mediator.publish('hub:timesheet:access:request', {module: "timesheets"});
             },
             addressbook: function () {
-
+                // fire event to inform about module access request.
+                mediator.publish('hub:addressbook:access:request', {module: "addressbook"});
             }
         });
 
@@ -80,6 +87,8 @@ define([
         ViewManager.initialize();
         window.Erp.mediator = new Mediator();
         window.Erp.router = new AppRouter();
+        window.Erp.loader = new ErpLoader();
+        window.Erp.loader.initialize();
         window.Erp.mediator.subscribe('hub:rendering:start', initLoading);
         window.Erp.router.on('route:defaultAction', function (actions) {
             var signinView = new SigninView();

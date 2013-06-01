@@ -34,6 +34,7 @@ require.config({
         bootstrapEditable : './libs/bootstrap/bootstrap-editable-min',
         spin : './spin',
         erp : './erp',
+        erploader : './erploader',
         erpconfig : './erpconfig',
         helper : './helper',
         viewManager : './ViewManager',
@@ -128,6 +129,10 @@ require.config({
         erp : {
             deps : ['jquery', 'spin', 'bootstrap','date', 'browserDetect', 'erpconfig'],
             exports : 'Erp'
+        },
+        erploader : {
+            deps : ['jquery', 'mediator', 'erp'],
+            exports : 'ErpLoader'
         },
         erpconfig: {
             deps: [],
