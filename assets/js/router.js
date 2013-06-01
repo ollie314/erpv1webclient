@@ -9,20 +9,11 @@ define([
     'browserDetect',
     'erp',
     'erploader',
-    'views/utils/SpinView',
-    'views/hub/modules/site/forms/AddProviderFormView',
-    'views/hub/modules/site/forms/AddUnitFormView',
-    'views/hub/modules/site/forms/AddCodeFormView',
-    'views/hub/modules/site/forms/AddSiteFormView',
-    'views/hub/modules/site/ListView',
-    'views/connection/SigninView',
-    'views/manager/UsersAndGroupsView',
-    'views/hub/HubView'
+    'bootMetroCharms',
+    'views/utils/SpinView'
 ], function ($, _, Backbone, ViewManager,
              StateMachine, Mediator, MetroUi,
-             BrowserDetect, Erp, ErpLoader, SpinView,
-             AddProviderFormView, AddUnitFormView, AddCodeFormView, AddSiteFormView, ListView,
-             SigninView, UsersAndGroupsView, HubView /*, FooterView*/) {
+             BrowserDetect, Erp, ErpLoader, BootMetroCharms, SpinView) {
 
     String.isNullOrEmpty = function (str) {
         return (null == str || str == "");
@@ -50,25 +41,13 @@ define([
                 '*actions': 'defaultAction'
             },
             hub: function () {
-                var hubView = new HubView();
-                hubView.render();
+                mediator.publish("hub:access:request");
             },
             manageUsers: function () {
-                var usersAndGroupsView = new UsersAndGroupsView();
-                usersAndGroupsView.render();
+                mediator.publish('hub:usermanagermodule:access:request', {module: "timesheets"});
             },
             siteManager: function () {
                 mediator.publish('hub:sitemodule:access:request', {module: "timesheets"});
-                // TODO : add lazy loading behavior
-                var listView = new ListView(),
-                    forms = {
-                        addProvider: new AddProviderFormView(),
-                        addUnit: new AddUnitFormView(),
-                        addCode: new AddCodeFormView(),
-                        addSite: new AddSiteFormView()
-                    };
-                listView.forms = forms;
-                listView.render();
             },
             timesheets: function () {
                 // TODO : add lazy loading behavior
@@ -91,8 +70,7 @@ define([
         window.Erp.loader.initialize();
         window.Erp.mediator.subscribe('hub:rendering:start', initLoading);
         window.Erp.router.on('route:defaultAction', function (actions) {
-            var signinView = new SigninView();
-            signinView.render();
+            mediator.publish('application:signin:access:request');
         });
         $(".metro").metro();
         $("#charms").charms();
