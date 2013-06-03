@@ -40,14 +40,30 @@ define([
                         form = form || $("#loginForm");
                         var login = $("#inputEmail", form).val(),
                             password = $("#inputPassword", form).val(),
-                            re = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+                            re = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/,
+                            header,
+                            message,
+                            data;
                         if (!re.test(login)) {
-                            // TODO : notification.
-                            alert("Email is not valid");
+                            header = "Error";
+                            message = "Email is not valid";
+                            data = {
+                                header : header,
+                                message : message,
+                                autohide : true
+                            };
+                            mediator.publish('erp:notification', data);
                             return false;
                         }
                         if (String.isNullOrEmpty(password) || password.length < 6) {
-                            alert("The password shouldn't be null and must match with the expected complexity.\nMinimal length = 6 char");
+                            header = "Error";
+                            message = "The password shouldn't be null and must match with the expected complexity.\nMinimal length = 6 char";
+                            data = {
+                                header : header,
+                                message : message,
+                                autohide : true
+                            };
+                            mediator.publish("erp:notification", data);
                             return false;
                         }
                         return true;

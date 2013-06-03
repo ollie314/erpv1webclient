@@ -170,3 +170,59 @@ div.info {
     width: 80px;
   }
 }
+
+#notificationContainer {
+  position: absolute;
+  top: -15px
+}
+
+.identification-form-container {
+  position: relative;
+  top: 6pc;
+  header {
+    margin: {
+      bottom: 15px;
+    }
+    h2 {
+      color: white;
+      font-weight: bolder;
+    }
+  }
+  .form {
+    .control-label {
+      color: white;
+      line-height: inherit;
+    }
+  }
+}
+#siteManagerBottomBar {
+  button {
+    .erp-win-commandimage {
+      border: 2px solid white;
+      -webkit-border-radius: 40px;
+      -moz-border-radius: 40px;
+      border-radius: 40px;
+      width:30px;
+      height:30px;
+      margin: 12px 0;
+      padding: 7px;
+      vertical-align: top;
+      img {
+        /*background: url('/assets/images/icons/dark/appbar.base.png');
+        background-position: left top, left top;
+        background-repeat: no-repeat, repeat;*/
+        font-size: 20px;
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+        vertical-align: top;
+        /*&.erp-win-command-home {
+          content: ' ';
+          background: url('/assets/images/icons/dark/appbar.base.png'), url("/assets/images/icons/dark/appbar.home.png");
+          background-position: left top, left top;
+          background-repeat: no-repeat, repeat;
+        }*/
+        }
+    }
+  }
+}

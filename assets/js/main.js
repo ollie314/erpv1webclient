@@ -1,4 +1,8 @@
-/*global $*/
+/*global $ */
+/*global window */
+/*global log4javascript */
+/*global require */
+/*global define */
 
 // ===================================================== \\
 //                                                       \\
@@ -35,6 +39,7 @@ require.config({
         spin : './spin',
         erp : './erp',
         erploader : './erploader',
+        erpnotification : './views/utils/ErpNotification',
         erpconfig : './erpconfig',
         helper : './helper',
         viewManager : './ViewManager',
@@ -134,6 +139,10 @@ require.config({
             deps : ['jquery', 'mediator', 'erp'],
             exports : 'ErpLoader'
         },
+        erpnotification : {
+            deps : ['jquery', 'underscore', 'backbone', 'text', 'i18n'],
+            exports : 'ErpNotification'
+        },
         erpconfig: {
             deps: [],
             exports: 'ErpConfig'
@@ -148,6 +157,7 @@ require.config({
 require([
     'application'
 ], function (App) {
+    'use strict';
     window.log = log4javascript.getDefaultLogger();
     App.initialize();
 });

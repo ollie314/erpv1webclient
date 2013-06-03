@@ -1,3 +1,4 @@
+/*global window */
 define([
     'jquery',
     'underscore',
@@ -9,14 +10,15 @@ define([
     'browserDetect',
     'erp',
     'erploader',
+    'erpnotification',
     'bootMetroCharms',
     'views/utils/SpinView'
-], function ($, _, Backbone, ViewManager,
-             StateMachine, Mediator, MetroUi,
-             BrowserDetect, Erp, ErpLoader, BootMetroCharms, SpinView) {
+], function ($, _, Backbone, ViewManager, StateMachine, Mediator, MetroUi, BrowserDetect, Erp, ErpLoader, ErpNotification, BootMetroCharms, SpinView) {
+
+    'use strict';
 
     String.isNullOrEmpty = function (str) {
-        return (null == str || str == "");
+        return (null === str || str === "");
     };
 
     var mediator = window.Erp.mediator,
@@ -58,28 +60,32 @@ define([
                 // fire event to inform about module access request.
                 mediator.publish('hub:addressbook:access:request', {module: "addressbook"});
             }
-        });
-
-    var initialize = function () {
-        Erp.initialize();
-        window.Erp.runMode = window.appRunMode;
-        ViewManager.initialize();
-        window.Erp.mediator = new Mediator();
-        window.Erp.router = new AppRouter();
-        window.Erp.loader = new ErpLoader();
-        window.Erp.loader.initialize();
-        window.Erp.mediator.subscribe('hub:rendering:start', initLoading);
-        window.Erp.router.on('route:defaultAction', function (actions) {
-            mediator.publish('application:signin:access:request');
-        });
-        $(".metro").metro();
-        $("#charms").charms();
-        Erp.Utils.checkBrowserCompatibility();
-        Backbone.history.start();
-    };
+        }),
+        initialize = function () {
+            Erp.initialize();
+            window.Erp.runMode = window.appRunMode;
+            ViewManager.initialize();
+            window.Erp.mediator = new Mediator();
+            window.Erp.router = new AppRouter();
+            window.Erp.loader = new ErpLoader();
+            window.Erp.loader.initialize();
+            window.Erp.mediator.subscribe('hub:rendering:start', initLoading);
+            window.Erp.router.on('route:defaultAction', function (actions) {
+                mediator.publish('application:signin:access:request');
+            });
+            //$(".metro").metro();
+            $("#charms").charms();
+            window.Erp.mediator.subscribe("erp:notification", function (data) {
+                var notification = new ErpNotification(),
+                    header = data.hasOwnProperty('header') ? data.header : "Info",
+                    message = data.hasOwnProperty('message') ? data.message : "@-@'";
+                notification.show(header, message, data);
+            });
+            Erp.Utils.checkBrowserCompatibility();
+            Backbone.history.start();
+        };
 
     return {
         initialize: initialize
     };
-})
-;
+});

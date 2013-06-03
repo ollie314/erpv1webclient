@@ -24,12 +24,21 @@
           content="metro, metroui, metro-ui, metro ui, windows 8, metro style, bootstrap, framework, web framework, css, html"/>
     <meta name="author" content="Simnet S.A."/>
 
-    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+
+    <!--link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap-responsive.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/metro-ui-light.css"-->
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootmetro-icons.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/bootmetro.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootmetro-responsive.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootmetro-ui-light.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/bootmetro-tiles.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/bootmetro-charms.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/metro-ui-light.css">
+    <!--[if IE 7]>
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootmetro-icons-ie7.css">
+    <![endif]-->
+
     <link rel="stylesheet" type="text/css" href="/assets/css/icomoon.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/datepicker.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/daterangepicker.css">
@@ -51,7 +60,7 @@
        Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
        For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
     <script type="text/javascript" src="/assets/js/libs/log4javascript/log4javascript.js"></script>
-    <script src="/assets/js/back/modernizr-2.6.1.min.js"></script>
+    <script src="/assets/js/libs/modernizr-2.6.2.min.js"></script>
     <script>
         // define the application run mode out of any file and before including any of these.
         /*
@@ -64,17 +73,19 @@
         window.appRunMode = 3;
     </script>
 </head>
-<body data-accent="blue" class="metro">
+<body>
 <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
        chromium.org/developers/how-tos/chrome-frame-getting-started -->
 <p class=chromeframe>Your browser is <em>not compatible!</em> <a href="http://browsehappy.com/">Upgrade to a
     different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a>
     to experience this site.</p>
+<!-- ============================================================================================================ -->
 <header id="nav-bar" class="container-fluid"></header>
 <div id="pageContainer" class="container-fluid"></div>
-<footer id="pageFooter" class="win-ui-dark win-commandlayout navbar-fixed-bottom"></footer>
+<footer id="pageFooter"></footer>
 <div id="charms" class="win-ui-dark"></div>
 <div id="dialogPlaceholder"></div>
+<div id="notificationContainer" class="row-fluid"></div>
 <script src="/assets/js/libs/mediatorjs/mediator.js"></script>
 <script data-main="/assets/js/main" src="/assets/js/libs/require/require.js"></script>
 <script type="text/javascript" src="/assets/js/libs/canvas/canvas.js"></script>
