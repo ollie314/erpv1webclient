@@ -1,9 +1,12 @@
+/*global define*/
+/*global window*/
+/*global $*/
 define([
     'browserDetect',
     'mediator',
     'erpconfig'
 ], function (BrowserDetect, Mediator, ErpConfig) {
-
+    'use strict';
     function Erp() {
         this.runMode = 0;
         this.authenticated = false;
@@ -18,8 +21,8 @@ define([
         };
     }
 
-    Erp.prototype.onSigninSuccess = function(user, event, date) {
-        if(this.authenticated) {
+    Erp.prototype.onSigninSuccess = function (user, event, date) {
+        if (this.authenticated) {
             // task has been already performed
             return;
         }
@@ -27,20 +30,20 @@ define([
         this.authenticated = true;
         this.session.user = user;
         this.session.loginDate = date;
-    }
+    };
 
-    Erp.prototype.onSignoutSuccess = function(user, event, date) {
+    Erp.prototype.onSignoutSuccess = function (user, event, date) {
         date = date || new Date();
         this.authenticated = false;
         this.session = {}
         this.lastSessionEnd = date;
-    }
+    };
 
     Erp.initialize = function () {
-        if (window.Erp == undefined) {
+        if (window.Erp === undefined) {
             window.Erp = new Erp();
         }
-        if(window.Erp.mediator == undefined) {
+        if (window.Erp.mediator === undefined) {
             window.Erp.mediator = new Mediator();
         }
 
@@ -53,11 +56,11 @@ define([
     };
 
     Erp.RunMode = {
-        PROD : 0,
-        STAGING : 1,
-        TESTING : 2,
-        DEV : 3
-    }
+        PROD: 0,
+        STAGING: 1,
+        TESTING: 2,
+        DEV: 3
+    };
 
     Erp.Events = {
         ERP_START: 'erp:start',
@@ -79,14 +82,19 @@ define([
         SITE_MANAGER_BOTTOM_BAR: 'siteManagerBottomBarView',
         SITE_MANAGER_LIST_FILTER_VIEW: 'siteManagerListFilterView',
         SITE_MANAGER_LIST_VIEW_BY_DATE: 'siteManagerListFilterViewByDate',
-        SITE_MANAGER_LIST_VIEW_BY_SIE: 'siteManagerListFilterViewBySite'
+        SITE_MANAGER_LIST_VIEW_BY_SIE: 'siteManagerListFilterViewBySite',
+        TIMESHEET_MANAGER_LIST_VIEW: 'timesheetManagerListView',
+        TIMESHEET_MANAGER_BOTTOM_BAR: 'timesheetManagerBottomBarView',
+        TIMESHEET_MANAGER_LIST_FILTER_VIEW: 'timesheetManagerListFilterView',
+        TIMESHEET_MANAGER_LIST_VIEW_BY_DATE: 'timesheetManagerListFilterViewByDate',
+        TIMESHEET_MANAGER_LIST_VIEW_BY_SIE: 'timesheetManagerListFilterViewBySite'
     };
 
     Erp.Utils = {
         checkBrowserCompatibility: function () {
             var detector = new BrowserDetect();
             detector.init();
-            if (detector.browser == "Explorer") {
+            if (detector.browser === "Explorer") {
                 $(".chromeframe").show();
             }
         }
