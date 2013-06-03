@@ -1,4 +1,9 @@
+/*global document*/
+/*global window*/
 /*global $*/
+/*global define*/
+/*global alert*/
+/*global setTimeout*/
 
 // ============================================= \\
 //
@@ -16,6 +21,7 @@ define([
     'views/sidebars/help/SidebarHelpAuthentView',
     'text!/templates/connection/signin.html'
 ], function ($, _, Backbone, MetroUi, Mediator, Erp, AnonNavView, SidebarHelpAuthentView, signinTemplate) {
+    'use strict';
     var erp = window.Erp,
         mediator = erp.mediator,
         success = false,
@@ -50,7 +56,8 @@ define([
                             data = {
                                 header : header,
                                 message : message,
-                                autohide : true
+                                autohide : false,
+                                kind: 'alert'
                             };
                             mediator.publish('erp:notification', data);
                             return false;
@@ -61,7 +68,8 @@ define([
                             data = {
                                 header : header,
                                 message : message,
-                                autohide : true
+                                autohide : true,
+                                kind: 'alert'
                             };
                             mediator.publish("erp:notification", data);
                             return false;
@@ -91,7 +99,7 @@ define([
                                 400: function (data, errorText, reason) {
                                     alert("The mail format is not valid");
                                     validResponse = false;
-                                    success = false;;
+                                    success = false;
                                     mediator.publish(Erp.Events.AJAX_LOADING_FAILURE);
                                     mediator.publish(Erp.Events.AUTHENT_FAILURE);
                                     return false;
@@ -105,7 +113,7 @@ define([
                                     // manage or not (a simple global var should do the stuff). By checking this flag, application known if
                                     // the response has been manage
                                     var response = extractResponse(data);
-                                    if (null == response) {
+                                    if (null === response) {
                                         alert("An unexpected error occurred on the backend, please contact your system administrator");
                                     }
                                     validResponse = false;
@@ -136,7 +144,7 @@ define([
                                 }
                                 mediator.publish(Erp.Events.AJAX_LOADING_COMPLETE);
                                 btn.button('reset');
-                                if(success) {
+                                if (success) {
                                     document.location.href = "#hub";
                                     document.location.reload();
                                 }

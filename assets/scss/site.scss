@@ -173,7 +173,7 @@ div.info {
 
 #notificationContainer {
   position: absolute;
-  top: -15px
+  top: -15px;
 }
 
 .identification-form-container {
@@ -223,6 +223,36 @@ div.info {
           background-repeat: no-repeat, repeat;
         }*/
         }
+    }
+  }
+}
+
+.toast {
+  border: medium none;
+  &.toast-alert {
+    background-color: red;
+  }
+  &.toast-success {
+    background-color: "#347C17";
+  }
+  &.toast-info,
+  &.toast-message {
+    background-color: "#B4CFEC";
+  }
+  &.toast-warn {
+    background-color: "#F88017";
+  }
+  &.toast-notification {
+    background-color: "#FAAFBA";
+  }
+  &.erp-toast {
+    text-align: center;
+    padding: 10px 0;
+    h4 {
+      font-size: 1.4em;
+      font-weight: bolder;
+      padding: 0 0 10px;
+      font-family: 'Merriweather Sans', sans-serif;
     }
   }
 }

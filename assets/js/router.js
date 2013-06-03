@@ -1,4 +1,5 @@
 /*global window */
+/*global define */
 define([
     'jquery',
     'underscore',
