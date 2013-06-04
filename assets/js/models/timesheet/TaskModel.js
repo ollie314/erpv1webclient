@@ -1,19 +1,14 @@
-/**
- * $($$ID : corthay_201306031859-$$)
- * User: mlefebvre
- * Date: 03.06.13
- * Time: 18:59
- */
 /*global define*/
 /*global $*/
 define([
     'underscore',
-    'backbone',
-    'date',
-    'models/timesheet/task'
-], function (_, Backbone, date, Task) {
+    'backbone'
+], function (_, Backbone) {
     'use strict';
     /**
+     * Describe a unit, like m2, m3, m, km, ...
+     * This is useful to calculate some information for invocing.
+     *
      * @author mlefebvre - mlefebvre[at]simnetsa[dot]com
      * @version 0.01
      *
@@ -22,7 +17,7 @@ define([
      *
      * @type {*}
      */
-    var Timesheet = Backbone.RelationalModel.extend({
+    var Task = Backbone.Model.extend({
         initialize: function () {
             var that = this;
             // Hook into jquery
@@ -37,15 +32,19 @@ define([
                     jqXHR.setRequestHeader('X-CSRF-Token', that.get('_csrf'));
                 }
             });
-            this.date = new Date();
         },
         urlRoot: 'http://corthay.self.local:3000/api/timesheets',
         urlExtension: ".json",
         toJSON: function () {
             return {
                 "timesheet": {
-                    "owner_id": this.attributes['owner_id'],
-                    "date": this.attributes['date']
+                    "site": this.attributes['site'],
+                    "subsite": this.attributes['subsite'],
+                    "client": this.attributes['client'],
+                    "responsible": this.attributes['responsible'],
+                    "label": this.attributes['label'],
+                    "duration": this.attributes['duration'],
+                    "description": this.attributes['description']
                 }
             };
         }

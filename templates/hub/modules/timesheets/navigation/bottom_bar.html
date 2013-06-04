@@ -1,0 +1,55 @@
+<div class="win-ui-dark win-commandlayout navbar-fixed-bottom" id="timesheetManagerBottomBar">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span3 align-left">
+                <button class="win-command" data-href="#hub">
+                    <span class="win-commandimage win-commandring">
+                        <img src="/assets/images/icons/dark/appbar.home.png">
+                    </span>
+                    <span class="win-label"><%= home_label =></span>
+                </button>
+                <button class="win-command" data-toggle="modal" data-target="#searchForm">
+                    <span class="win-commandimage win-commandring">
+                        <img src="/assets/images/icons/dark/appbar.magnify.png">
+                    </span>
+                    <span class="win-label"><%= search_label =></span>
+                </button>
+            </div>
+            <div class="span2 offset1">
+                <button class="win-command" data-href="#hub/site-manager">
+                    <span class="win-commandimage win-commandring">
+                        <img src="/assets/images/icons/dark/appbar.box.png">
+                    </span>
+                    <span class="win-label"><%= material_label =></span>
+                </button>
+                <button class="win-command" data-toggle="modal" data-target="#hub/timesheets">
+                    <span class="win-commandimage win-commandring">
+                        <img src="/assets/images/icons/dark/appbar.clock.png">
+                    </span>
+                    <span class="win-label"><%= addressbook_label %>></span>
+                </button>
+            </div>
+            <div class="span4 align-right offset1">
+                <button class="win-command red" data-toggle="modal" data-target="#deleteConfirm">
+                    <span class="win-commandimage win-commandring">
+                        <img src="/assets/images/icons/dark/appbar.delete.png">
+                    </span>
+                    <span class="win-label"><%= delete_label %></span>
+                </button>
+                <hr class="win-command">
+                <button class="win-command" data-toggle="modal" data-target="#saveDialog">
+                    <span class="win-commandimage win-commandring">
+                        <img src="/assets/images/icons/dark/appbar.page.pdf.png">
+                    </span>
+                    <span class="win-label"><%= save_label %></span>
+                </button>
+                <button class="win-command" data-toggle="modal" data-target="#printDialog">
+                    <span class="win-commandimage win-commandring">
+                        <img src="/assets/images/icons/dark/appbar.printer.blank.png">
+                    </span>
+                    <span class="win-label"><%= print_label %></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

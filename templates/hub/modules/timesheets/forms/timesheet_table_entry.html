@@ -1,0 +1,47 @@
+<tr>
+    <td class="align-center">
+        <label class="checkbox">
+            <input type="checkbox"><span class="metro-checkbox"></span>
+        </label>
+    </td>
+    <td>
+        <input type="hidden" name="tsEntrySiteCode[]" id="tsEntrySiteCodeInput_<%= id %>" value="<%= siteId %>"/>
+        <input type="text" name="tsEntrySiteName[]" id="tsEntrySiteNameInput_<%= id %>"
+               placeholder="<%= site_label_placeholder %>" value="<%= siteName %>"/>
+    </td>
+    <td>
+        <input type="hidden" name="tsEntryClientCode[]" id="tsEntryClientCodeInput_<%= id %>" value="<%= clientId %>"/>
+        <input type="text" name="tsEntryClientName[]" id="tsEntryClientNameInput_<%= id %>"
+               placeholder="<%= client_label_placeholder %>" value="<%= clientName %>"/>
+    </td>
+    <td>
+        <!-- not posted, act as a way to speed up the entry process -->
+        <input type="text" class="" id="tsEntryCodeAndLabelIdsInput_<%= id %>"
+                  placeholder="<%= codeAndLabel_label_placeholder %>">
+    </td>
+    <td>
+        <input type="text" class="" name="tsEntryLabel[]" id="tsEntryLabelInput_<%= id %>"
+                  placeholder="<%= label_label_placeholder %>" value="<%= %>">
+    </td>
+    <td>
+        <input type="text" class="span3 site-unit-table-entry" name="materialUnit[]" id="materialUnitInput_<%= id %>"
+               placeholder="<%= unit_label_placeholder %>" value="<%= unit %>"/>
+    </td>
+    <td>
+        <input type="text" class="site-qty-table-entry" name="materialQuantity[]" id="materialQuantityInput_<%= id %>"
+               placeholder="<%= quantity_label_placeholder %>" value="<%= quantity %>"/>
+    </td>
+    <td>
+        <input type="text" class="span3 site-price-table-entry" name="materialUnitPrice" id="materialUnitPriceInput_<%= id %>"
+               placeholder="<%= price_label_placeholder %>" value="<%= price %>"/>
+    </td>
+    <td>
+        <a class="btn btn-small" href="#" data-item-id="<%= id %>" id="duplicateMaterialItemDialog" title="<%= duplicate_item_label %>">
+            <i class="icon-edit"></i>
+        </a>
+        <a class="action delete btn btn-small" data-toggle="modal" href="#deleteConfirm" title="<%= delete_item_label %>"
+           data-target="#deleteConfirm" data-item-id="<%= id %>">
+            <i class="icon-remove"></i>
+        </a>
+    </td>
+</tr>

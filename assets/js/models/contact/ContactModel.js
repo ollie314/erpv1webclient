@@ -1,11 +1,18 @@
+/**
+ * $($$ID : corthay_201306031642-$$)
+ * User: mlefebvre
+ * Date: 03.06.13
+ * Time: 16:42
+ */
+/*global define*/
+/*global $*/
 define([
     'underscore',
     'backbone'
 ], function (_, Backbone) {
-
+    'use strict';
     /**
-     * Describe a unit, like m2, m3, m, km, ...
-     * This is useful to calculate some information for invocing.
+     * Describe a contact in the application.
      *
      * @author mlefebvre - mlefebvre[at]simnetsa[dot]com
      * @version 0.01
@@ -15,7 +22,7 @@ define([
      *
      * @type {*}
      */
-    var TimesheetEntry = Backbone.Model.extend({
+    var Contact = Backbone.Model.extend({
         initialize: function () {
             var that = this;
             // Hook into jquery
@@ -26,26 +33,22 @@ define([
                     withCredentials: false
                 };
                 // If we have a csrf token send it through with the next request
-                if (typeof that.get('_csrf') !== 'undefined') {
+                if (that.get('_csrf') !== 'undefined') {
                     jqXHR.setRequestHeader('X-CSRF-Token', that.get('_csrf'));
                 }
             });
         },
-        urlRoot: 'http://corthay.self.local:3000/api/timesheets',
+        urlRoot: 'http://corthay.self.local:3000/api/codes',
         urlExtension: ".json",
         toJSON: function () {
             return {
-                "timesheet": {
-                    "site": this.attributes['site'],
-                    "subsite": this.attributes['subsite'],
-                    "client": this.attributes['client'],
-                    "responsible": this.attributes['responsible'],
-                    "label": this.attributes['label'],
-                    "duration": this.attributes['duration'],
-                    "description": this.attributes['description']
+                "contact": {
+                    "firstname": this.attributes['firstname'],
+                    "lastname": this.attributes['lastname'],
+                    "mail": this.attributes['mail']
                 }
             };
         }
     });
-    return TimesheetEntry;
+    return Contact;
 });

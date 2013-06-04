@@ -35,7 +35,15 @@ define([
         };
 
         this.loadTimesheetModule = function () {
-            alert("Timesheet request");
+            require([
+                'jquery',
+                'underscore',
+                'backbone',
+                'views/hub/modules/timesheets/TimesheetListView'
+            ], function ($, _, Backbone, TimesheetListView) {
+                var timesheetListView = new TimesheetListView();
+                timesheetListView.render();
+            });
         };
 
         this.loadUsermanagerModule = function () {
