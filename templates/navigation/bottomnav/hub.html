@@ -1,29 +1,31 @@
-<div class="container">
-    <div class="row-fluid">
-        <div class="span6 align-left">
-            <button class="win-command">
-                <span class="win-commandimage win-commandring">&#x0067;</span>
-                <span class="win-label">Search</span>
-            </button>
-        </div>
-        <div class="span6 align-right">
-            <button class="win-command">
-                <span class="win-commandimage win-commandring">&#xE165;</span>
-                <span class="win-label">Send Email</span>
-            </button>
-            <hr class="win-command">
-            <button class="win-command">
-                <span class="win-commandimage win-commandring">&#xe000;</span>
-                <span class="win-label">Our labs</span>
-            </button>
-            <button class="win-command">
-                <span class="win-commandimage win-commandring">&#xe035;</span>
-                <span class="win-label">Ask us</span>
-            </button>
-            <button class="win-command">
-                <span class="win-commandimage win-commandring">&#xe0de;</span>
-                <span class="win-label">Feature ?</span>
-            </button>
+<div class="win-ui-dark win-commandlayout navbar-fixed-bottom" id="siteManagerBottomBar">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span6 align-left">
+                <button class="win-command" rel="tootlip" title="\<%= button_search_title %>">
+                    <span class="win-commandicon win-commandring icon-search-3"></span>
+                    <span class="win-label"><%= button_search_label %></span>
+                </button>
+            </div>
+            <div class="span6 align-right">
+                <button class="win-command" rel="tootlip" title="\<%= button_sendmail_title %>">
+                    <span class="win-commandicon win-commandring icon-mail"></span>
+                    <span class="win-label"><%= button_sendmail_label %></span>
+                </button>
+                <hr class="win-command">
+                <button class="win-command" rel="tootlip" title="\<%= button_lab_title %>">
+                    <span class="win-commandicon win-commandring icon-lab"></span>
+                    <span class="win-label"><%= button_lab_label %></span>
+                </button>
+                <button class="win-command" rel="tootlip" title="\<%= button_ask_title %>">
+                    <span class="win-commandicon win-commandring icon-question"></span>
+                    <span class="win-label"><%= button_ask_label %></span>
+                </button>
+                <button class="win-command" rel="tootlip" title="\<%= button_feature_title %>">
+                    <span class="win-commandicon win-commandring icon-bug-2"></span>
+                    <span class="win-label"><%= button_feature_label %></span>
+                </button>
+            </div>
         </div>
     </div>
 </div>
